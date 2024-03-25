@@ -37,12 +37,11 @@ namespace Inventory
 
             var inventory = _inventories[inventoryIdentifier];
 
-            var succeed = inventory.TryAddItem(itemId, itemsCount);
+            inventory.AddItem(itemId, itemsCount);
             
-            if (succeed) 
-                Save();
+            Save();
             
-            return succeed;
+            return true;
         }
 
         public bool TryRemoveItem(InventoryIdentifier inventoryIdentifier, string itemId, long itemsCount)

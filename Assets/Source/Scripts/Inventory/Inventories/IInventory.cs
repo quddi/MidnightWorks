@@ -2,7 +2,7 @@
 {
     public interface IInventory
     {
-        public bool TryAddItem(string itemId, long itemsCount);
+        public void AddItem(string itemId, long itemsCount);
         
         public bool TryRemoveItem(string itemId, long itemsCount);
 
