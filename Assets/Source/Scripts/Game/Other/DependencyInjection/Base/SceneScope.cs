@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using VContainer.Unity;
 
-namespace Tip1.Scopes
+namespace Game.DependencyInjection
 {
     public class SceneScope : CustomScope
     {

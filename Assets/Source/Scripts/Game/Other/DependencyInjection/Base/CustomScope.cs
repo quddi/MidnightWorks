@@ -3,7 +3,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Tip1.Scopes
+namespace Game.DependencyInjection
 {
     public abstract class CustomScope : LifetimeScope
     {

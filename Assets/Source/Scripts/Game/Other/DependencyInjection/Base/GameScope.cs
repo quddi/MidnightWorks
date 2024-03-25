@@ -1,4 +1,4 @@
-﻿namespace Tip1.Scopes
+﻿namespace Game.DependencyInjection
 {
     public class GameScope : CustomScope { }
 }
