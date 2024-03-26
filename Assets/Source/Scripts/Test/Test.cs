@@ -1,25 +1,29 @@
-﻿using System.Collections.Generic;
-using Extensions;
-using Sirenix.OdinInspector;
-using Sirenix.Utilities;
-using UnityEngine;
-using VContainer.Unity;
+﻿using Sirenix.OdinInspector;
+using UI;
+using VContainer;
 
 namespace Test
 {
     public class Test : SerializedMonoBehaviour
     {
-#if UNITY_EDITOR
-        [ValueDropdown("@InventoryServiceConfig.ItemsIds")]
-#endif
-        [SerializeField, TabGroup("Parameters")] private string _itemId;
+        private IUiService _uiService;
 
-        [SerializeField, TabGroup("Parameters")] private List<IInstaller> _list;
+        [Inject]
+        private void Construct(IUiService uiService)
+        {
+            _uiService = uiService;
+        }
+
+        [Button]
+        private bool ShowGameplayWindow(int layer)
+        {
+            return _uiService.TryShowWindow<GameplayWindow>(layer) == null;
+        }
         
         [Button]
-        public void Test1()
+        private bool HideGameplayWindow()
         {
-            EditorGet.BuiltScenesNames.ForEach(Debug.Log);
+            return _uiService.TryHideWindow<GameplayWindow>();
         }
     }
 }

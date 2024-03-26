@@ -22,12 +22,18 @@ namespace UI
         
         public T TryShowWindow<T>(int layer) where T : Window
         {
+            if (!_windowsContainers.ContainsLayer(layer))
+                throw new ArgumentException($"Unknown layer: {layer}");
+            
             var key = typeof(T);
 
             if (_activeWindows.TryGetValue(key, out (Window window, int layer) value))
             {
                 if (value.layer != layer)
-                    value.window.transform.parent = _windowsContainers[value.layer].Transform;
+                {
+                    value.window.transform.parent = _windowsContainers[layer].Transform;
+                    _activeWindows[key] = (value.window, layer);
+                }
                 
                 return (T)value.window;
             }
@@ -37,6 +43,7 @@ namespace UI
                 : CreateWindow(key, _windowsContainers[layer]);
             
             window.gameObject.SetActive(true);
+            window.transform.parent = _windowsContainers[layer].Transform;
             
             _activeWindows[key] = (window, layer);
 
@@ -53,6 +60,8 @@ namespace UI
             var window = _activeWindows.Snatch(key).window;
             
             window.gameObject.SetActive(false);
+
+            window.transform.parent = null;
             
             _inactiveWindows[key] = window;
 
@@ -66,7 +75,7 @@ namespace UI
         
         private Window CreateWindow(Type type, WindowsContainer windowsContainer)
         {
-            if (_uiServiceConfig.WindowsPrefabs.ContainsKey(type))
+            if (!_uiServiceConfig.WindowsPrefabs.ContainsKey(type))
                 throw new ArgumentException($"Prefab for window of type [{type}] not found!");
 
             var prefab = _uiServiceConfig.WindowsPrefabs[type];

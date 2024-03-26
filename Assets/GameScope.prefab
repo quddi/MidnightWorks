@@ -67,6 +67,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: bdcabb642d8a713439477a02fa9bdac6, type: 2}
+    - {fileID: 11400000, guid: fc1b463eb1df0434d8e0451762843367, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -111,8 +112,8 @@ MonoBehaviour:
       Entry: 7
       Data: 4|UI.UiServiceInstaller, Assembly-CSharp
     - Name: _uiServiceConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 

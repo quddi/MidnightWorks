@@ -12,7 +12,7 @@ namespace UI
         public WindowsContainer this[int layer] => _windowsContainers[layer];
 
         [Inject]
-        private void Construct(UiService uiService)
+        private void Construct(IUiService uiService)
         {
             uiService.RegisterWindowsContainers(this);
         }
@@ -28,6 +28,11 @@ namespace UI
                 
                 _windowsContainers.Add(windowContainer);
             }
+        }
+
+        public bool ContainsLayer(int layer)
+        {
+            return layer >= 0 && _windowsContainers.Count > layer;
         }
     }
 }
