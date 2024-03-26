@@ -7,7 +7,7 @@ namespace DataStorage
     {
         public void Install(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<DataStorageService>().AsSelf();
+            builder.RegisterEntryPoint<DataStorageService>();
         }
     }
 }

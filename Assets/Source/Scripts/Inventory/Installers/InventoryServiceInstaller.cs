@@ -11,8 +11,7 @@ namespace Inventory
         public void Install(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<InventoryService>()
-                .WithParameter("inventoryServiceConfig", _inventoryServiceConfig)
-                .AsSelf();
+                .WithParameter("inventoryServiceConfig", _inventoryServiceConfig);
         }
     }
 }
