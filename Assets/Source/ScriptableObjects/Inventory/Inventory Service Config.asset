@@ -84,15 +84,7 @@ MonoBehaviour:
       Data: 5|Inventory.UnStackableInventory, Assembly-CSharp
     - Name: _items
       Entry: 7
-      Data: 6|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 6|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -116,7 +108,7 @@ MonoBehaviour:
       Data: 
     - Name: <ItemsConfigs>k__BackingField
       Entry: 7
-      Data: 8|System.Collections.Generic.HashSet`1[[Inventory.ItemConfig, Assembly-CSharp]],
+      Data: 7|System.Collections.Generic.HashSet`1[[Inventory.ItemConfig, Assembly-CSharp]],
         System.Core
     - Name: 
       Entry: 12

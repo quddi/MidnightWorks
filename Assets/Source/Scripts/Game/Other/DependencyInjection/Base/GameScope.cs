@@ -1,4 +1,4 @@
-﻿namespace Game.DependencyInjection
+﻿namespace Game
 {
     public class GameScope : CustomScope { }
 }

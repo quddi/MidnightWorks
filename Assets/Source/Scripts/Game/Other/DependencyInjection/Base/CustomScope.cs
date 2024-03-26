@@ -1,25 +1,23 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Game.DependencyInjection
+namespace Game
 {
     public abstract class CustomScope : LifetimeScope
     {
-        [SerializeField] private List<IInstaller> _injectableServicesInstallers = new();
-        [SerializeField] private List<IInstaller> _defaultServicesInstallers = new();
+        [SerializeField] private InstallersContainer _installersContainer;
 
         [Inject]
         private void Construct(IObjectResolver objectResolver)
         {
-            _injectableServicesInstallers.ForEach(objectResolver.Inject);
+            _installersContainer.InjectableServicesInstallers.ForEach(objectResolver.Inject);
         }
         
         protected override void Configure(IContainerBuilder builder)
         {
-            _injectableServicesInstallers.ForEach(service => service.Install(builder));
-            _defaultServicesInstallers.ForEach(service => service.Install(builder));
+            _installersContainer.InjectableServicesInstallers.ForEach(service => service.Install(builder));
+            _installersContainer.DefaultServicesInstallers.ForEach(service => service.Install(builder));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.DependencyInjection
+namespace Game
 {
     public class SceneScope : CustomScope
     {

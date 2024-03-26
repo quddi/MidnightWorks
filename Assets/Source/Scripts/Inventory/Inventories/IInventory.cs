@@ -6,7 +6,7 @@
         
         public bool TryRemoveItem(string itemId, long itemsCount);
 
-        public bool ContainItem(string itemId, long itemCount);
+        public bool ContainItem(string itemId, long itemsCount);
         
         public bool ContainItem(string itemId);
     }
