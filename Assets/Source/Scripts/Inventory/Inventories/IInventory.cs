@@ -2,11 +2,11 @@
 {
     public interface IInventory
     {
-        public void AddItem(string itemId, long itemsCount);
+        public void AddItem(ItemParameters itemParameters);
         
-        public bool TryRemoveItem(string itemId, long itemsCount);
+        public bool TryRemoveItem(ItemParameters itemParameters);
 
-        public bool ContainItem(string itemId, long itemsCount);
+        public bool ContainItem(ItemParameters itemParameters);
         
         public bool ContainItem(string itemId);
     }

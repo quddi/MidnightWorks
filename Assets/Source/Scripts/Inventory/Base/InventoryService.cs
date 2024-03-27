@@ -18,8 +18,8 @@ namespace Inventory
 
         private Dictionary<InventoryIdentifier, IInventory> _inventories;
 
-        public event Action<InventoryIdentifier, string, long> OnItemAdded;
-        public event Action<InventoryIdentifier, string, long> OnItemRemoved;
+        public event Action<InventoryIdentifier, ItemParameters> OnItemAdded;
+        public event Action<InventoryIdentifier, ItemParameters> OnItemRemoved;
 
         [Inject]
         private void Construct(InventoryServiceConfig inventoryServiceConfig, IDataStorageService dataStorageService)
@@ -28,29 +28,23 @@ namespace Inventory
             _inventoryServiceConfig = inventoryServiceConfig;
         }
 
-        private void Save()
-        {
-            _dataStorageService.SaveLazily(_inventoryServiceConfig.DataStorageKey,
-                JsonConvert.SerializeObject(_inventories, Constants.JsonSerializerSettings));
-        }
-
-        public bool TryAddItem(InventoryIdentifier inventoryIdentifier, string itemId, long itemsCount)
+        public bool TryAddItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
             if (!_inventories.ContainsKey(inventoryIdentifier))
                 return false;
 
             var inventory = _inventories[inventoryIdentifier];
 
-            inventory.AddItem(itemId, itemsCount);
+            inventory.AddItem(itemParameters.Id, itemParameters.Count);
             
-            OnItemAdded?.Invoke(inventoryIdentifier, itemId, itemsCount);
+            OnItemAdded?.Invoke(inventoryIdentifier, itemParameters);
             
             Save();
             
             return true;
         }
 
-        public bool TryRemoveItem(InventoryIdentifier inventoryIdentifier, string itemId, long itemsCount)
+        public bool TryRemoveItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
             if (!_inventories.ContainsKey(inventoryIdentifier))
                 return false;
@@ -66,6 +60,22 @@ namespace Inventory
             }
             
             return succeed;
+        }
+
+        public bool CanRemove(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ContainItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Save()
+        {
+            _dataStorageService.SaveLazily(_inventoryServiceConfig.DataStorageKey,
+                JsonConvert.SerializeObject(_inventories, Constants.JsonSerializerSettings));
         }
 
         public bool ContainItem(InventoryIdentifier inventoryIdentifier, string itemId, long itemsCount)
@@ -88,11 +98,13 @@ namespace Inventory
             return inventory.ContainItem(itemId);
         }
 
-        public async UniTask StartAsync(CancellationToken cancellation)
+        public async UniTask StartAsync(CancellationToken _)
         {
             if (!_dataStorageService.Contains(_inventoryServiceConfig.DataStorageKey))
             {
                 _inventories = new(_inventoryServiceConfig.Inventories);
+                
+                Save();
                 
                 return;
             }

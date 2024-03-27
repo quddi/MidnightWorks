@@ -16,7 +16,7 @@ namespace Inventory
         [JsonIgnore]
         public IReadOnlyList<string> Items => _items;
         
-        public void AddItem(string itemId, long itemsCount)
+        public void AddItem()
         {
             for (int i = 0; i < itemsCount; i++)
             {

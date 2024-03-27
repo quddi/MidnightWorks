@@ -14,33 +14,33 @@ namespace Inventory
         [JsonIgnore]
         private IReadOnlyDictionary<string, long> Items => _items;
         
-        public void AddItem(string itemId, long itemsCount)
+        public void AddItem(ItemParameters itemParameters)
         {
-            if (!_items.TryAdd(itemId, itemsCount)) 
-                _items[itemId] += itemsCount;
+            if (!_items.TryAdd(itemParameters.Id, itemParameters.Count)) 
+                _items[itemParameters.Id] += itemParameters.Count;
         }
 
-        public bool TryRemoveItem(string itemId, long itemsCount)
+        public bool TryRemoveItem(ItemParameters itemParameters)
         {
-            if (!ContainItem(itemId, itemsCount))
+            if (!ContainItem(itemParameters))
                 return false;
 
-            _items[itemId] -= itemsCount;
+            _items[itemParameters.Id] -= itemParameters.Count;
 
-            if (_items[itemId] == 0)
-                _items.Remove(itemId);
+            if (_items[itemParameters.Id] == 0)
+                _items.Remove(itemParameters.Id);
 
             return true;
         }
 
-        public bool ContainItem(string itemId, long itemsCount)
+        public bool ContainItem(ItemParameters itemParameters)
         {
-            return _items.ContainsKey(itemId) && _items[itemId] >= itemsCount;
+            return _items.ContainsKey(itemParameters.Id) && _items[itemParameters.Id] >= itemParameters.Count;
         }
 
         public bool ContainItem(string itemId)
         {
-            return ContainItem(itemId, 0);
+            return ContainItem(new ItemParameters { Id = itemId, Count = 0 });
         }
     }
 }
