@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Inventory
 {
+    [Serializable]
     public class UnStackableInventory : IInventory
     {
-        [SerializeField, ReadOnly] private List<string> _items = new();
+        [SerializeField, ReadOnly, JsonProperty] 
+        private List<string> _items = new();
 
+        [JsonIgnore]
         public IReadOnlyList<string> Items => _items;
         
         public void AddItem(string itemId, long itemsCount)

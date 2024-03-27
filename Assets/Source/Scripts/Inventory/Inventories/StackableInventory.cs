@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Inventory
 {
+    [SerializeField]
     public class StackableInventory : IInventory
     {
-        [SerializeField, ReadOnly] private Dictionary<string, long> _items = new();
+        [SerializeField, ReadOnly, JsonProperty] 
+        private Dictionary<string, long> _items = new();
 
+        [JsonIgnore]
         private IReadOnlyDictionary<string, long> Items => _items;
         
         public void AddItem(string itemId, long itemsCount)

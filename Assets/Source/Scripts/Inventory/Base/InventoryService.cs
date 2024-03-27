@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DataStorage;
@@ -17,6 +18,9 @@ namespace Inventory
 
         private Dictionary<InventoryIdentifier, IInventory> _inventories;
 
+        public event Action<InventoryIdentifier, string, long> OnItemAdded;
+        public event Action<InventoryIdentifier, string, long> OnItemRemoved;
+
         [Inject]
         private void Construct(InventoryServiceConfig inventoryServiceConfig, IDataStorageService dataStorageService)
         {
@@ -29,7 +33,7 @@ namespace Inventory
             _dataStorageService.SaveLazily(_inventoryServiceConfig.DataStorageKey,
                 JsonConvert.SerializeObject(_inventories, Constants.JsonSerializerSettings));
         }
-        
+
         public bool TryAddItem(InventoryIdentifier inventoryIdentifier, string itemId, long itemsCount)
         {
             if (!_inventories.ContainsKey(inventoryIdentifier))
@@ -38,6 +42,8 @@ namespace Inventory
             var inventory = _inventories[inventoryIdentifier];
 
             inventory.AddItem(itemId, itemsCount);
+            
+            OnItemAdded?.Invoke(inventoryIdentifier, itemId, itemsCount);
             
             Save();
             
@@ -52,9 +58,12 @@ namespace Inventory
             var inventory = _inventories[inventoryIdentifier];
 
             var succeed = inventory.TryRemoveItem(itemId, itemsCount);
-            
+
             if (succeed)
+            {
                 Save();
+                OnItemRemoved?.Invoke(inventoryIdentifier, itemId, itemsCount);
+            }
             
             return succeed;
         }
