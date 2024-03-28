@@ -19,6 +19,7 @@ namespace Inventory
         private Dictionary<InventoryIdentifier, IInventory> _inventories;
 
         public event Action<InventoryIdentifier, ItemParameters> OnItemAdded;
+
         public event Action<InventoryIdentifier, ItemParameters> OnItemRemoved;
 
         [Inject]
@@ -28,6 +29,12 @@ namespace Inventory
             _inventoryServiceConfig = inventoryServiceConfig;
         }
 
+        private void Save()
+        {
+            _dataStorageService.SaveLazily(_inventoryServiceConfig.DataStorageKey,
+                JsonConvert.SerializeObject(_inventories, Constants.JsonSerializerSettings));
+        }
+
         public bool TryAddItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
             if (!_inventories.ContainsKey(inventoryIdentifier))
@@ -35,7 +42,7 @@ namespace Inventory
 
             var inventory = _inventories[inventoryIdentifier];
 
-            inventory.AddItem(itemParameters.Id, itemParameters.Count);
+            inventory.AddItem(itemParameters);
             
             OnItemAdded?.Invoke(inventoryIdentifier, itemParameters);
             
@@ -51,12 +58,12 @@ namespace Inventory
             
             var inventory = _inventories[inventoryIdentifier];
 
-            var succeed = inventory.TryRemoveItem(itemId, itemsCount);
+            var succeed = inventory.TryRemoveItem(itemParameters);
 
             if (succeed)
             {
                 Save();
-                OnItemRemoved?.Invoke(inventoryIdentifier, itemId, itemsCount);
+                OnItemRemoved?.Invoke(inventoryIdentifier, itemParameters);
             }
             
             return succeed;
@@ -69,23 +76,12 @@ namespace Inventory
 
         public bool ContainItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
-            throw new NotImplementedException();
-        }
-
-        private void Save()
-        {
-            _dataStorageService.SaveLazily(_inventoryServiceConfig.DataStorageKey,
-                JsonConvert.SerializeObject(_inventories, Constants.JsonSerializerSettings));
-        }
-
-        public bool ContainItem(InventoryIdentifier inventoryIdentifier, string itemId, long itemsCount)
-        {
             if (!_inventories.ContainsKey(inventoryIdentifier))
                 return false;
             
             var inventory = _inventories[inventoryIdentifier];
-            
-            return inventory.ContainItem(itemId, itemsCount);
+
+            return inventory.ContainItem(itemParameters);
         }
 
         public bool ContainItem(InventoryIdentifier inventoryIdentifier, string itemId)

@@ -2,7 +2,7 @@
 using UI;
 using VContainer;
 
-namespace Test
+namespace Tools
 {
     public class Test : SerializedMonoBehaviour
     {

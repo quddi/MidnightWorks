@@ -16,37 +16,37 @@ namespace Inventory
         [JsonIgnore]
         public IReadOnlyList<string> Items => _items;
         
-        public void AddItem()
+        public void AddItem(ItemParameters itemParameters)
         {
-            for (int i = 0; i < itemsCount; i++)
+            for (int i = 0; i < itemParameters.Count; i++)
             {
-                _items.Add(itemId);
+                _items.Add(itemParameters.Id);
             }
         }
 
-        public bool TryRemoveItem(string itemId, long itemsCount)
+        public bool TryRemoveItem(ItemParameters itemParameters)
         {
-            if (!ContainItem(itemId, itemsCount))
+            if (!ContainItem(itemParameters))
                 return false;
 
-            for (int i = 0; i < itemsCount; i++)
+            for (int i = 0; i < itemParameters.Count; i++)
             {
-                _items.Remove(itemId);
+                _items.Remove(itemParameters.Id);
             }
 
             return true;
         }
 
-        public bool ContainItem(string itemId, long itemsCount)
+        public bool ContainItem(ItemParameters itemParameters)
         {
-            var containedItemsCount = _items.Count(inventoryItemId => inventoryItemId == itemId);
+            var containedItemsCount = _items.Count(inventoryItemId => inventoryItemId == itemParameters.Id);
 
-            return containedItemsCount >= itemsCount;
+            return containedItemsCount >= itemParameters.Count;
         }
 
         public bool ContainItem(string itemId)
         {
-            return ContainItem(itemId, 1);
+            return ContainItem(new ItemParameters { Id = itemId, Count = 1});
         }
     }
 }
