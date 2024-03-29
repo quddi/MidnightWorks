@@ -1,11 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Extensions
 {
     public static class ExtensionMethods
     {
+        public static Vector3 GetRandomPoint(this Bounds bounds) 
+        {
+            var minX = bounds.size.x * -0.5f;
+            var minY = bounds.size.y * -0.5f;
+            var minZ = bounds.size.z * -0.5f;
+
+            return new Vector3(Random.Range(minX, -minX), Random.Range(minY, -minY), Random.Range(minZ, -minZ));
+        }
+
+        public static float RandomFromInterval(this (float Min, float Max) interval)
+        {
+            return Random.Range(interval.Min, interval.Max);
+        }
+        
         public static T SnatchFirst<T>(this HashSet<T> hashSet)
         {
             var element = hashSet.First();

@@ -1,4 +1,5 @@
 ﻿using System;
+using Buildings;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +10,10 @@ namespace NPC
     public class Npc : SerializedMonoBehaviour
     {
         [field: ShowInInspector, ReadOnly] public NpcConfig Config { get; private set; }
+        
+        public Building Building { get; set; }
+        public Transform LeavingPoint { get; set; }
+        public Bounds? PromenadingBounds { get; set; }
         
         public event Action OnConfigChanged; 
         
@@ -21,7 +26,7 @@ namespace NPC
         
         public void ResetOnRelease()
         {
-            //TODO
+            //TODO:
         }
 
         public override string ToString()
