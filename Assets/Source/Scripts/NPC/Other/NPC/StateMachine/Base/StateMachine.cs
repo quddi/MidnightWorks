@@ -14,7 +14,7 @@ namespace NPC
 
         public async UniTaskVoid SetState(IState state)
         {
-            if (state != null && CurrentState.GetType() == state.GetType())
+            if (state != null && CurrentState != null && CurrentState.GetType() == state.GetType())
                 throw new ArgumentException($"Trying to set [{state.GetType()}] state, but it is already set!");
             
             var oldState = CurrentState;

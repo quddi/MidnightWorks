@@ -8,7 +8,6 @@ namespace NPC
     {
         [SerializeField, TabGroup("Components")] private Npc _npc;
         [SerializeField, TabGroup("Components")] private NpcMovement _npcMovement;
-        [SerializeField, TabGroup("Components")] private StateMachine _stateMachine;
         
         protected override async void StartListening(PromenadingState state)
         {

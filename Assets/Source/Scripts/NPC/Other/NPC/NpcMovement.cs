@@ -23,8 +23,8 @@ namespace NPC
                 var position = _agent.transform.position;
                 
                 return Vector2.Distance(new
-                    Vector2(position.x, position.y), new Vector2
-                    (destination.x, destination.y)
+                    Vector2(position.x, position.z), new Vector2
+                    (destination.x, destination.z)
                     ) < DestinationReachedTolerance;
             }
         }

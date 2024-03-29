@@ -5,7 +5,7 @@ namespace NPC
 {
     public abstract class StateTransitionListener<T> : MonoBehaviour where T : IState
     {
-        [SerializeField, TabGroup("Components")] private StateMachine _stateMachine;
+        [SerializeField, TabGroup("Components")] protected StateMachine _stateMachine;
 
         protected abstract void StartListening(T state);
 

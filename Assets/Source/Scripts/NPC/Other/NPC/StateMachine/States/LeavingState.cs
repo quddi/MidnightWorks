@@ -1,14 +1,17 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NPC
 {
+    [Serializable]
     public class LeavingState : CancellableState
     {
-        public NpcMovement NpcMovement { get; set; }
+        [field: ShowInInspector, ReadOnly] public NpcMovement NpcMovement { get; set; }
         
-        public Transform LeavingPoint { get; set; }
+        [field: ShowInInspector, ReadOnly] public Transform LeavingPoint { get; set; }
         
         protected override UniTask Execute(CancellationToken token)
         {

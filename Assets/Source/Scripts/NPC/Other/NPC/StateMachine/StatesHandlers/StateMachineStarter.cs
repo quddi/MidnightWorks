@@ -15,19 +15,22 @@ namespace NPC
 
         private readonly int StartFramesDelay = 5;
         
-        private void OnEnable()
+        private async void OnEnable()
         {
+            await UniTask.WhenAll
+            (
+                UniTask.DelayFrame(StartFramesDelay),
+                UniTask.WaitWhile(() => _npc.PromenadingBoundsCollider == null)
+            );
+            
             var state = new PromenadingState
             {
                 NpcMovement = _npcMovement,
-                Bounds = _npc.PromenadingBounds!.Value,
+                BoundsCollider = _npc.PromenadingBoundsCollider,
                 IdleDelay = (_minIdleDelay, _maxIdleDelay)
             };
 
-            UniTask
-                .DelayFrame(StartFramesDelay)
-                .ContinueWith(() => _stateMachine.SetState(state))
-                .Forget();
+            _stateMachine.SetState(state).Forget();
         }
     }
 }

@@ -1,15 +1,18 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Buildings;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NPC
 {
+    [Serializable]
     public class GoBuildingState : CancellableState
     {
-        public NpcMovement NpcMovement { get; set; }
+        [field: ShowInInspector, ReadOnly] public NpcMovement NpcMovement { get; set; }
         
-        public Building Building { get; set; }
+        [field: ShowInInspector, ReadOnly] public Building Building { get; set; }
         
         protected override UniTask Execute(CancellationToken token)
         {

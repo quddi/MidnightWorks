@@ -9,11 +9,18 @@ namespace Extensions
     {
         public static Vector3 GetRandomPoint(this Bounds bounds) 
         {
-            var minX = bounds.size.x * -0.5f;
-            var minY = bounds.size.y * -0.5f;
-            var minZ = bounds.size.z * -0.5f;
+            var minX = bounds.size.x * 0.5f;
+            var minY = bounds.size.y * 0.5f;
+            var minZ = bounds.size.z * 0.5f;
 
             return new Vector3(Random.Range(minX, -minX), Random.Range(minY, -minY), Random.Range(minZ, -minZ));
+        }
+        
+        public static Vector3 GetRandomPointInBounds(this BoxCollider boundsCollider)
+        {
+            var position = boundsCollider.transform.position;
+
+            return position + boundsCollider.bounds.GetRandomPoint();
         }
 
         public static float RandomFromInterval(this (float Min, float Max) interval)

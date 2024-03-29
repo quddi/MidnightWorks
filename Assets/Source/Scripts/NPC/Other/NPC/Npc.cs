@@ -13,7 +13,7 @@ namespace NPC
         
         public Building Building { get; set; }
         public Transform LeavingPoint { get; set; }
-        public Bounds? PromenadingBounds { get; set; }
+        public BoxCollider PromenadingBoundsCollider { get; set; }
         
         public event Action OnConfigChanged; 
         
