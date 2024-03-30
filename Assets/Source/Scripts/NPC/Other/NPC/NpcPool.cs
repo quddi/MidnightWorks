@@ -88,16 +88,16 @@ namespace NPC
         {
             var set = _inactiveNpc[npcConfig.Id];
             
-            var npc = _inactiveNpc.Any()
+            var npc = set.Any()
                 ? set.SnatchFirst()
                 : InstantiateNpc(npcConfig);
             
             npc.gameObject.SetActive(true);
             npc.transform.SetPositionAndRotation(_spawnPoint.position, Quaternion.identity);
 
+            npc.Config = npcConfig;
             npc.LeavingPoint = _leavingPoint;
             npc.PromenadingBoundsCollider = _promenadingCollider;
-            npc.Config = npcConfig;
             _promenadingNpc.Add(npc);
 
             return npc;
@@ -110,9 +110,11 @@ namespace NPC
             
             _occupiedNpc.Remove(npc);
             
-            npc.ResetOnRelease();
             npc.gameObject.SetActive(false);
 
+            if (!_inactiveNpc.ContainsKey(npc.Config.Id))
+                _inactiveNpc[npc.Config.Id] = new();
+            
             _inactiveNpc[npc.Config.Id].Add(npc);
         }
 

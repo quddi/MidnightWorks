@@ -22,4 +22,4 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   <Id>k__BackingField: NPC Racer 1 Config
-  <Mesh>k__BackingField: {fileID: 1577543689594235073, guid: 2abc415d2049770498e181266e011ce6, type: 3}
+  <Prefab>k__BackingField: {fileID: 2935906744014111715, guid: 75f08acf1089b00418d342ec077ace04, type: 3}

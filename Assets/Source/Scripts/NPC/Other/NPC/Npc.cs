@@ -27,12 +27,6 @@ namespace NPC
         {
             OnLeft?.Invoke(this);
         }
-        
-        public void ResetOnRelease()
-        {
-            Config = null;
-            Building = null;
-        }
 
         public override string ToString()
         {

@@ -22,4 +22,4 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   <Id>k__BackingField: NPC Man 2 Config
-  <Mesh>k__BackingField: {fileID: -3901440221886706549, guid: 413d01e656e3c8f4bb2157354280ceaf, type: 3}
+  <Prefab>k__BackingField: {fileID: 2506839411719731383, guid: f729d466517ac3b4281ceb1cee98ecf4, type: 3}

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,19 +10,28 @@ namespace NPC
     public class NpcMovement : MonoBehaviour
     {
         [SerializeField, TabGroup("Components")] private NavMeshAgent _agent;
+        [SerializeField, TabGroup("Components")] private NpcAnimator _npcAnimator;
 
         public bool IsMoving { get; private set; }
         
         private const float DestinationReachedTolerance = 0.001f;
-        
-        public UniTask Move(Vector3 destination, CancellationToken token)
+
+        private void OnDisable()
+        {
+            _npcAnimator.SetIdleAnimation();
+        }
+
+        public async UniTask Move(Vector3 destination, CancellationToken token)
         {
             IsMoving = true;
+            _npcAnimator.SetWalkingAnimation();
             
             _agent.SetDestination(destination);
 
-            return UniTask.WaitUntil(IsDestinationReached, cancellationToken: token)
-                .ContinueWith(() => IsMoving = false);
+            await UniTask.WaitUntil(IsDestinationReached, cancellationToken: token);
+
+            _npcAnimator.SetIdleAnimation();
+            IsMoving = false;
             
             bool IsDestinationReached()
             {

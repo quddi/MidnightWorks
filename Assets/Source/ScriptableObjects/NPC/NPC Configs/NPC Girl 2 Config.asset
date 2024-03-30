@@ -22,4 +22,4 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   <Id>k__BackingField: NPC Girl 2 Config
-  <Mesh>k__BackingField: {fileID: 3509167664748578443, guid: 0a41f1a1e2faa814ab287b2fc77f6558, type: 3}
+  <Prefab>k__BackingField: {fileID: 6460008944942321831, guid: 79929d754fc96224d8c13bb004d6abc9, type: 3}

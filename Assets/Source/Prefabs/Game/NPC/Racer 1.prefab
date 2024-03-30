@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 5082820564508102871, guid: a7fabf30102b29642af3eeebbdba45f2, type: 3}
+    - target: {fileID: 6641194333445999149, guid: a7fabf30102b29642af3eeebbdba45f2, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 4732593380338644397}
     - target: {fileID: 7846102447832602118, guid: a7fabf30102b29642af3eeebbdba45f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
