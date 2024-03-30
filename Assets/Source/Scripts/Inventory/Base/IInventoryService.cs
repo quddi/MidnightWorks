@@ -7,8 +7,11 @@ namespace Inventory
     public interface IInventoryService
     {
         public event Action<InventoryIdentifier, ItemParameters> OnItemAdded; 
-        public event Action<InventoryIdentifier, ItemParameters> OnItemRemoved; 
+        public event Action<InventoryIdentifier, ItemParameters> OnItemRemoved;
+
+        public ItemConfig GetItemConfig(string itemId);
         
+        public long GetItemsCount(InventoryIdentifier inventoryIdentifier, string itemId);
         public bool TryAddItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters);
         
         public bool TryRemoveItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters);
