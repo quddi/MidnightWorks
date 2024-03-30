@@ -22,6 +22,8 @@ namespace NPC
                 NpcMovement = _npcMovement,
                 LeavingPoint = _npc.LeavingPoint,
             }).Forget();
+            
+            _npc.StopShopping();
         }
 
         protected override void StopListening(ShoppingState state) { }

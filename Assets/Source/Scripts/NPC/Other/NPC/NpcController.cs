@@ -1,40 +1,73 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using AOT;
 using Buildings;
 using Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
+using VContainer;
 
 namespace NPC
 {
     public class NpcController : SerializedMonoBehaviour
     {
-        [SerializeField, TabGroup("Components")] private Transform _leavingPoint;
-        [SerializeField, TabGroup("Components")] private BoxCollider _promenadingCollider;
+        [SerializeField, TabGroup("Parameters"), SuffixLabel("s")] private float _checkingDelay;
+        
         [SerializeField, TabGroup("Components")] private NpcPool _npcPool;
         [SerializeField, TabGroup("Components")] private BuildingsPool _buildingsPool;
-
-        private List<Npc> _activeNpc = new();
         
-#if UNITY_EDITOR
-        [Button]
-        private void Spawn()
-        {
-            var configs = ExtensionMethods.GetAllScriptableObjects<NpcConfig>().ToList();
-            
-            foreach (var npcConfig in configs)
-            {
-                var npc = _npcPool.DeployNpc(npcConfig);
+        private float _currentTime;
+        
+        private List<Npc> _activeNpc = new();
 
-                npc.PromenadingBoundsCollider = _promenadingCollider;
-                npc.LeavingPoint = _leavingPoint;
-                
-                _activeNpc.Add(npc);
+        private void Update()
+        {
+            if (_currentTime >= _checkingDelay)
+            {
+                Check();
+
+                _currentTime = 0;
             }
+
+            _currentTime += Time.deltaTime;
         }
 
+        private void Check()
+        {
+            if (!_buildingsPool.ContainsFreeBuildings)
+                return;
+            
+            if (!_npcPool.CanTakePromenadingNpc)
+                return;
+
+            var building = _buildingsPool.GetRandomBuilding();
+            var npc = _npcPool.TakePromenadingNpc();
+            
+            npc.OnStoppedShopping += OnNpcStoppedShoppingHandler;
+
+            npc.Building = building;
+        }
+
+        private void OnNpcStoppedShoppingHandler(Npc npc)
+        {
+            npc.OnStoppedShopping -= OnNpcStoppedShoppingHandler;
+
+            var building = npc.Building;
+
+            _buildingsPool.ReleaseBuilding(building);
+
+            npc.OnLeft += OnNpcLeftHandler;
+            
+            npc.Building = null;
+        }
+
+        private void OnNpcLeftHandler(Npc npc)
+        {
+            npc.OnLeft -= OnNpcLeftHandler;
+            
+            _npcPool.ReleaseNpc(npc);   
+        }
+
+#if UNITY_EDITOR
         [Button]
         private void SentToBuilding1()
         {

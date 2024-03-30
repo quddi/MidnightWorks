@@ -16,8 +16,8 @@ namespace NPC
         public BoxCollider PromenadingBoundsCollider { get; set; }
         
         public event Action OnConfigChanged;
-
-        public event Action OnBuildingApproached;
+        public event Action<Npc> OnStoppedShopping;
+        public event Action<Npc> OnLeft;
         
         public void SetConfig(NpcConfig npcConfig)
         {
@@ -25,10 +25,21 @@ namespace NPC
             
             OnConfigChanged?.Invoke();
         }
+
+        public void StopShopping()
+        {
+            OnStoppedShopping?.Invoke(this);
+        }
+
+        public void Leave()
+        {
+            OnLeft?.Invoke(this);
+        }
         
         public void ResetOnRelease()
         {
-            //TODO:
+            Config = null;
+            Building = null;
         }
 
         public override string ToString()

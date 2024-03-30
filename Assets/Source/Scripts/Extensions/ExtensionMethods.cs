@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Extensions
 {
@@ -13,7 +13,10 @@ namespace Extensions
             var minY = bounds.size.y * 0.5f;
             var minZ = bounds.size.z * 0.5f;
 
-            return new Vector3(Random.Range(minX, -minX), Random.Range(minY, -minY), Random.Range(minZ, -minZ));
+            return new Vector3(
+                UnityEngine.Random.Range(minX, -minX), 
+                UnityEngine.Random.Range(minY, -minY), 
+                UnityEngine.Random.Range(minZ, -minZ));
         }
         
         public static Vector3 GetRandomPointInBounds(this BoxCollider boundsCollider)
@@ -25,7 +28,12 @@ namespace Extensions
 
         public static float RandomFromInterval(this (float Min, float Max) interval)
         {
-            return Random.Range(interval.Min, interval.Max);
+            return UnityEngine.Random.Range(interval.Min, interval.Max);
+        }
+        
+        public static int RandomFromInterval(this (int Min, int Max) interval)
+        {
+            return UnityEngine.Random.Range(interval.Min, interval.Max + 1);
         }
         
         public static T SnatchFirst<T>(this HashSet<T> hashSet)
@@ -57,6 +65,17 @@ namespace Extensions
             list.RemoveAt(randomIndex);
 
             return selectedElement;
+        }
+        
+        public static T Random<T>(this IList<T> list)
+        {
+            if (list.Count == 0)
+                throw new IndexOutOfRangeException("List needs at least one entry to call Random()");
+
+            if (list.Count == 1)
+                return list[0];
+
+            return list[UnityEngine.Random.Range(0, list.Count)];
         }
         
 #if UNITY_EDITOR

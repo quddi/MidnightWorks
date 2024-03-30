@@ -25,6 +25,11 @@ namespace NPC
             
             bool IsDestinationReached()
             {
+#if UNITY_EDITOR
+                if (_agent == null || _agent.transform == null) //To avoid exceptions after game exit
+                    return true;
+#endif
+                
                 var position = _agent.transform.position;
                 
                 return Vector2.Distance(new

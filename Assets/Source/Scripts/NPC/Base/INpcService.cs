@@ -1,4 +1,6 @@
-﻿namespace NPC
+﻿using System.Collections.Generic;
+
+namespace NPC
 {
     public interface INpcService
     {
