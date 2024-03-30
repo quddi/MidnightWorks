@@ -8,6 +8,6 @@ namespace NPC
     {
         [field: SerializeField] public string Id { get; private set; }
         
-        [field: SerializeField] public Mesh Mesh { get; private set; }
+        [field: SerializeField] public Npc Prefab { get; private set; }
     }
 }

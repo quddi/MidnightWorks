@@ -26,7 +26,7 @@ namespace NPC
         private INpcService _npcService;
         private HashSet<Npc> _promenadingNpc = new();
         private HashSet<Npc> _occupiedNpc = new();
-        private HashSet<Npc> _inactiveNpc = new();
+        private Dictionary<string, HashSet<Npc>> _inactiveNpc = new();
 
         private int ActiveNpcCount => _promenadingNpc.Count + _occupiedNpc.Count;
 
@@ -40,6 +40,8 @@ namespace NPC
 
         private void Start()
         {
+            _inactiveNpc = _spawnedNpcIds.ToDictionary(id => id, _ => new HashSet<Npc>());
+            
             Check();
         }
 
@@ -84,16 +86,18 @@ namespace NPC
         
         private Npc DeployNpc(NpcConfig npcConfig)
         {
+            var set = _inactiveNpc[npcConfig.Id];
+            
             var npc = _inactiveNpc.Any()
-                ? _inactiveNpc.SnatchFirst()
-                : InstantiateNpc();
+                ? set.SnatchFirst()
+                : InstantiateNpc(npcConfig);
             
             npc.gameObject.SetActive(true);
             npc.transform.SetPositionAndRotation(_spawnPoint.position, Quaternion.identity);
-            npc.SetConfig(npcConfig);
 
             npc.LeavingPoint = _leavingPoint;
             npc.PromenadingBoundsCollider = _promenadingCollider;
+            npc.Config = npcConfig;
             _promenadingNpc.Add(npc);
 
             return npc;
@@ -109,12 +113,12 @@ namespace NPC
             npc.ResetOnRelease();
             npc.gameObject.SetActive(false);
 
-            _inactiveNpc.Add(npc);
+            _inactiveNpc[npc.Config.Id].Add(npc);
         }
 
-        private Npc InstantiateNpc()
+        private Npc InstantiateNpc(NpcConfig npcConfig)
         {
-            var npc = Instantiate(_npcService.NpcPrefab, _spawnPoint);
+            var npc = Instantiate(npcConfig.Prefab, _spawnPoint);
 
             _promenadingNpc.Add(npc);
 

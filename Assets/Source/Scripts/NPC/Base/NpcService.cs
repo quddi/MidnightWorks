@@ -11,8 +11,6 @@ namespace NPC
 
         private Dictionary<string, NpcConfig> _npcConfigs;
 
-        public Npc NpcPrefab => _npcServiceConfig.NpcPrefab;
-
         [Inject]
         private void Construct(NpcServiceConfig npcServiceConfig)
         {

@@ -9,8 +9,6 @@ namespace NPC
     [CreateAssetMenu(fileName = "NPC Service Config", menuName = "ScriptableObjects/NPC/NPC service config")]
     public class NpcServiceConfig : SerializedScriptableObject
     {
-        [field: SerializeField] public Npc NpcPrefab { get; private set; }
-        
         [field: SerializeField] public HashSet<NpcConfig> NpcConfigs { get; private set; } = new();
         
 #if UNITY_EDITOR

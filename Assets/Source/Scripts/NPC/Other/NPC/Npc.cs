@@ -9,22 +9,14 @@ namespace NPC
     [RequireComponent(typeof(NavMeshAgent))]
     public class Npc : SerializedMonoBehaviour
     {
-        [field: ShowInInspector, ReadOnly] public NpcConfig Config { get; private set; }
+        [field: ShowInInspector, ReadOnly] public NpcConfig Config { get; set; }
         
         [field: ShowInInspector, ReadOnly] public Building Building { get; set; }
         public Transform LeavingPoint { get; set; }
         public BoxCollider PromenadingBoundsCollider { get; set; }
         
-        public event Action OnConfigChanged;
         public event Action<Npc> OnStoppedShopping;
         public event Action<Npc> OnLeft;
-        
-        public void SetConfig(NpcConfig npcConfig)
-        {
-            Config = npcConfig;
-            
-            OnConfigChanged?.Invoke();
-        }
 
         public void StopShopping()
         {

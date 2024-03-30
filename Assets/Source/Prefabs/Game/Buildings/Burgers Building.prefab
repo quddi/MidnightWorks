@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2141330412315483919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.469, y: 0.187, z: -0.286}
+  m_LocalPosition: {x: -0.418, y: 0.187, z: -0.341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126,7 +126,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.2375, y: 0.16, z: 0.01}
+  m_Extents: {x: 0.255, y: 0.16, z: 0.01}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -254,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 8382202629361598189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.2, z: -0.286}
+  m_LocalPosition: {x: 0.25, y: 0.2, z: -0.276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,11 +270,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.2375, y: 0.16, z: 0.01}
+  m_Extents: {x: 0.255, y: 0.16, z: 0.01}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.08, y: 0, z: -3.28}
+  m_Center: {x: -0.08, y: 0, z: -3.34}
   m_TimeToStationary: 0.5
 --- !u!1001 &6187399587432883026
 PrefabInstance:
