@@ -132,59 +132,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.08, y: 0, z: -3.28}
   m_TimeToStationary: 0.5
---- !u!1 &5631024384025604547
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7838623114780667874}
-  - component: {fileID: 4397716850289394577}
-  m_Layer: 0
-  m_Name: Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7838623114780667874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5631024384025604547}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.163, y: 0, z: -3.124}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5300635017614414145}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4397716850289394577
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5631024384025604547}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.2478398, y: 0.33122998, z: 0.61609244}
-  m_Center: {x: 0.0013595223, y: 0.20063105, z: -0.14566004}
 --- !u!1 &6495349472610268902
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +284,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: Burgers Building
+      objectReference: {fileID: 0}
     - target: {fileID: 2040601576790471187, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7
@@ -413,6 +364,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -3.9659529
       objectReference: {fileID: 0}
+    - target: {fileID: 5883422382265061258, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.161
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883422382265061258, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.081
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883422382265061258, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.326
+      objectReference: {fileID: 0}
     - target: {fileID: 9083217840410509416, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       propertyPath: m_Name
       value: Burgers Building
@@ -423,9 +386,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2040601576790471187, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7475719780514964400}
-    - targetCorrespondingSourceObject: {fileID: 2040601576790471187, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7838623114780667874}
     - targetCorrespondingSourceObject: {fileID: 8112206747943585414, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5883273089235225812}

@@ -13,16 +13,13 @@ namespace NPC
         {
             await UniTask.WaitWhile(() => _npc.Building == null);
             
-            state.Cancel();
-        }
-
-        protected override void StopListening(PromenadingState state)
-        {
             _stateMachine.SetState(new GoBuildingState
             {
                 NpcMovement = _npcMovement,
                 Building = _npc.Building
             }).Forget();
         }
+
+        protected override void StopListening(PromenadingState state) { }
     }
 }

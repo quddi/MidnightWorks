@@ -10,12 +10,12 @@ namespace NPC
 
         public void SetWalkingAnimation()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SetIdleAnimation()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

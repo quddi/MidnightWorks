@@ -11,11 +11,13 @@ namespace NPC
     {
         [field: ShowInInspector, ReadOnly] public NpcConfig Config { get; private set; }
         
-        public Building Building { get; set; }
+        [field: ShowInInspector, ReadOnly] public Building Building { get; set; }
         public Transform LeavingPoint { get; set; }
         public BoxCollider PromenadingBoundsCollider { get; set; }
         
-        public event Action OnConfigChanged; 
+        public event Action OnConfigChanged;
+
+        public event Action OnBuildingApproached;
         
         public void SetConfig(NpcConfig npcConfig)
         {

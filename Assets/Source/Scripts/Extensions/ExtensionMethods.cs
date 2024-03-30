@@ -46,6 +46,19 @@ namespace Extensions
             return value;
         }
         
+        public static T SnatchRandom<T>(this IList<T> list)
+        {
+            if (list.Count == 0) return default;
+            
+            var randomIndex = UnityEngine.Random.Range(0, list.Count);
+
+            var selectedElement = list[randomIndex];
+                
+            list.RemoveAt(randomIndex);
+
+            return selectedElement;
+        }
+        
 #if UNITY_EDITOR
         public static IEnumerable<T> GetAllScriptableObjects<T>() where T : ScriptableObject
         {

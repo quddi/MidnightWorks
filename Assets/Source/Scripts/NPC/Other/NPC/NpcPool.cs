@@ -8,7 +8,7 @@ using VContainer;
 
 namespace NPC
 {
-    public class NpcPool : MonoBehaviour, INpcPool
+    public class NpcPool : MonoBehaviour
     {
         [SerializeField, TabGroup("Components")] private Transform _spawnPoint;
         

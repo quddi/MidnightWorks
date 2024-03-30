@@ -10,13 +10,18 @@ namespace NPC
     {
         [SerializeField, TabGroup("Components")] private NavMeshAgent _agent;
 
+        public bool IsMoving { get; private set; }
+        
         private const float DestinationReachedTolerance = 0.001f;
         
         public UniTask Move(Vector3 destination, CancellationToken token)
         {
+            IsMoving = true;
+            
             _agent.SetDestination(destination);
 
-            return UniTask.WaitUntil(IsDestinationReached, cancellationToken: token);
+            return UniTask.WaitUntil(IsDestinationReached, cancellationToken: token)
+                .ContinueWith(() => IsMoving = false);
             
             bool IsDestinationReached()
             {

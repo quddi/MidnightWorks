@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24ba7be046784bf39cdd59136781122d, type: 3}
-  m_Name: Drink Building 1
+  m_Name: Shoes Building
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -43,8 +43,8 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 2|Inventory.ItemParameters, Assembly-CSharp
-    - Name: <ItemId>k__BackingField
+      Data: Inventory.ItemParameters, Assembly-CSharp
+    - Name: <Id>k__BackingField
       Entry: 1
       Data: Money Item
     - Name: <Count>k__BackingField
@@ -61,15 +61,15 @@ MonoBehaviour:
       Data: 
     - Name: <ExecutionReward>k__BackingField
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[Inventory.ItemParameters, Assembly-CSharp]],
+      Data: 2|System.Collections.Generic.List`1[[Inventory.ItemParameters, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 4|Inventory.ItemParameters, Assembly-CSharp
-    - Name: <ItemId>k__BackingField
+      Data: Inventory.ItemParameters, Assembly-CSharp
+    - Name: <Id>k__BackingField
       Entry: 1
       Data: Money Item
     - Name: <Count>k__BackingField
@@ -84,4 +84,4 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  <Id>k__BackingField: Drink Building 1
+  <Id>k__BackingField: Shoes Building

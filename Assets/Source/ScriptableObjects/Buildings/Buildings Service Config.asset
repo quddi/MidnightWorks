@@ -16,7 +16,10 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 75d543d8c44359247922f1faba3ee341, type: 2}
     - {fileID: 11400000, guid: 811f85e0777583145a0ca1e5357fe416, type: 2}
+    - {fileID: 11400000, guid: 307937469da68a045ba9af771261e82d, type: 2}
+    - {fileID: 11400000, guid: 4845955c216131047bcd7f5641a1e138, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -28,10 +31,19 @@ MonoBehaviour:
         System.Core
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 4
     - Name: 
       Entry: 10
       Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 13
       Data: 
