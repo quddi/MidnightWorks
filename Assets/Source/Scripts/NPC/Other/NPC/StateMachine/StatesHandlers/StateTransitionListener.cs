@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NPC
 {
-    public abstract class StateTransitionListener<T> : MonoBehaviour where T : IState
+    public abstract class StateTransitionListener<T> : SerializedMonoBehaviour where T : IState
     {
         [SerializeField, TabGroup("Components")] protected StateMachine _stateMachine;
 

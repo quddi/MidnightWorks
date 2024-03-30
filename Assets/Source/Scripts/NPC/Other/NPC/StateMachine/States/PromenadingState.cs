@@ -13,7 +13,7 @@ namespace NPC
         [field: ShowInInspector, ReadOnly] public NpcMovement NpcMovement { get; set; }
             
         [field: ShowInInspector, ReadOnly] public BoxCollider BoundsCollider { get; set; }
-        [field: ShowInInspector, ReadOnly] public (float Min, float Max) IdleDelay { get; set; }
+        [field: ShowInInspector, ReadOnly, SuffixLabel("s")] public (float Min, float Max) IdleDelay { get; set; }
 
         protected override async UniTask Execute(CancellationToken token)
         {

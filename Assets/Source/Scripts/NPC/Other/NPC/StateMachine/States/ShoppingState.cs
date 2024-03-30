@@ -8,7 +8,7 @@ namespace NPC
 {
     public class ShoppingState : CancellableState
     {
-        [field: ShowInInspector, ReadOnly] public TimeSpan ShoppingDuration { get; set; }
+        public TimeSpan ShoppingDuration { get; set; }
 
         protected override UniTask Execute(CancellationToken token)
         {

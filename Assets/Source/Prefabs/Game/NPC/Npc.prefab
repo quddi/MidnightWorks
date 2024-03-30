@@ -115,6 +115,7 @@ Transform:
   - {fileID: 8480286903036429676}
   - {fileID: 642820610406433437}
   - {fileID: 4699517492607467176}
+  - {fileID: 9049348563520660044}
   - {fileID: 2796984871099075854}
   m_Father: {fileID: 7846102447832602118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -356,7 +357,7 @@ GameObject:
   - component: {fileID: 4699517492607467176}
   - component: {fileID: 8295809435133844954}
   m_Layer: 0
-  m_Name: GoBuildingToLeavingListener
+  m_Name: GoBuildingToShoppingListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,8 +390,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ea8d23fb0f4fbaa12de68405a56c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _shoppingDuration
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Single, mscorlib],[System.Single, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 4
+      Data: 1
+    - Name: Item2
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
   _stateMachine: {fileID: 5082820564508102871}
-  _npc: {fileID: 4074641695163478435}
   _npcMovement: {fileID: 7551415058179316171}
 --- !u!1 &6027272197447562109
 GameObject:
@@ -436,6 +458,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01437fd06b344ed4b692adcfac450940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _stateMachine: {fileID: 5082820564508102871}
+  _npc: {fileID: 4074641695163478435}
+  _npcMovement: {fileID: 7551415058179316171}
+--- !u!1 &6236173615136557449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9049348563520660044}
+  - component: {fileID: 8045554508092669205}
+  m_Layer: 0
+  m_Name: ShoppingToLeavingListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9049348563520660044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236173615136557449}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3518771610632666383}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8045554508092669205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236173615136557449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457c4ce3c309490580427474008d972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _pauseDuration
+      Entry: 7
+      Data: System.TimeSpan, mscorlib
+    - Name: 
+      Entry: 3
+      Data: 1000000
+    - Name: 
+      Entry: 8
+      Data: 
   _stateMachine: {fileID: 5082820564508102871}
   _npc: {fileID: 4074641695163478435}
   _npcMovement: {fileID: 7551415058179316171}
@@ -574,6 +670,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ab0005be57447291a485b6bb156dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   _stateMachine: {fileID: 5082820564508102871}
 --- !u!1001 &2303729890197885915
 PrefabInstance:
