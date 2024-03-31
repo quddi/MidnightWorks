@@ -26,6 +26,8 @@ namespace Buildings
         {
             _dataStorageService = dataStorageService;
             _buildingsServiceConfig = buildingsServiceConfig;
+
+            _buildingConfigs = _buildingsServiceConfig.BuildingsConfigs.ToDictionary(config => config.Id, config => config);
         }
 
         private void Save()
@@ -33,7 +35,12 @@ namespace Buildings
             _dataStorageService.SaveLazily(_buildingsServiceConfig.DataStorageKey,
                 JsonConvert.SerializeObject(_boughtBuildingsIds, Constants.JsonSerializerSettings));
         }
-        
+
+        public BuildingConfig GetBuildingConfig(string buildingId)
+        {
+            return _buildingConfigs.GetValueOrDefault(buildingId);
+        }
+
         public bool TryBuild(string buildingId)
         {
             if (IsBuilt(buildingId))

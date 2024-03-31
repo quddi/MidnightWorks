@@ -25,6 +25,9 @@ MonoBehaviour:
     - Name: <Id>k__BackingField
       Entry: 1
       Data: Burger Item
+    - Name: <IconInText>k__BackingField
+      Entry: 1
+      Data: <sprite=1>
     - Name: <Icon>k__BackingField
       Entry: 10
       Data: 0

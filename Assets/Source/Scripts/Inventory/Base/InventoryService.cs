@@ -88,11 +88,6 @@ namespace Inventory
             return succeed;
         }
 
-        public bool CanRemove(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool ContainItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
             if (!_inventories.ContainsKey(inventoryIdentifier.Id))

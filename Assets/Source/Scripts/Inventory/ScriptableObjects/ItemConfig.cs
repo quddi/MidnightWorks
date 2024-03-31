@@ -8,6 +8,7 @@ namespace Inventory
     {
         [field: SerializeField] public string Id { get; }
         
+        [field: SerializeField] public string IconInText { get; }
         [field: SerializeField] public Sprite Icon { get; }
         
         public override int GetHashCode()

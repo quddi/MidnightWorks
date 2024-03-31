@@ -138,7 +138,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.48
 --- !u!1 &3247438230047923179
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,10 +173,10 @@ RectTransform:
   - {fileID: 8263173747782186227}
   m_Father: {fileID: 5274594736493153752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000023842, y: -33.13499}
-  m_SizeDelta: {x: 192.37, y: 66.27}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -22.63}
+  m_SizeDelta: {x: -37.29, y: -53.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5315510143804534336
 CanvasRenderer:
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1.34
+  m_PixelsPerUnitMultiplier: 4.1
 --- !u!114 &5717803494042097214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +269,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5274594736493153752}
+  - component: {fileID: 214635339330000636}
   m_Layer: 0
-  m_Name: BuildView
+  m_Name: PurchaseView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,6 +300,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &214635339330000636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015474921040595001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8572de535167474096d13397efe47818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puchaseButton: {fileID: 5717803494042097214}
+  _purchaseButtonText: {fileID: 7819619778406841293}
+  _titleText: {fileID: 1878922085983320796}
+  _inventoryIdentifier: {fileID: 11400000, guid: 708daa9aad1d51946bd8d5da36f9f1b9, type: 2}
+  _availableColor: {r: 0, g: 1, b: 0.17140126, a: 1}
+  _unAvailableColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4104645186016223876
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +330,7 @@ GameObject:
   - component: {fileID: 7556801375971323597}
   - component: {fileID: 2801278660766884920}
   - component: {fileID: 3610830486423465466}
+  - component: {fileID: 4284765584516769014}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -327,7 +347,7 @@ RectTransform:
   m_GameObject: {fileID: 4104645186016223876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3.394}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5274594736493153752}
@@ -335,8 +355,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.146, y: 1.338}
-  m_SizeDelta: {x: 250, y: 150}
+  m_AnchoredPosition: {x: -0.146, y: 1.1651}
+  m_SizeDelta: {x: 150, y: 84.574}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7556801375971323597
 Canvas:
@@ -401,6 +421,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 503
+--- !u!114 &4284765584516769014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104645186016223876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bb3ea2d7044bbb98c4a36636872e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7985874639256294824}
 --- !u!1 &4994944154488992447
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,8 +468,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -58.700035}
-  m_SizeDelta: {x: 0, y: 32.6}
+  m_AnchoredPosition: {x: 0, y: -38.475006}
+  m_SizeDelta: {x: 0, y: 21.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8632859713336749927
 CanvasRenderer:
@@ -493,7 +526,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.05
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -569,8 +602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.74}
-  m_SizeDelta: {x: 0, y: 47.46}
+  m_AnchoredPosition: {x: 0, y: -13.9}
+  m_SizeDelta: {x: 0, y: 27.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4573647441168777088
 CanvasRenderer:
@@ -627,7 +660,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 19
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -663,7 +696,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 11.6876, y: 0, z: 11.687599, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -750,6 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 
   <StayPoint>k__BackingField: {fileID: 5883422382265061258}
+  _buildingPurchaseView: {fileID: 214635339330000636}
 --- !u!1 &9087335806561429299
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite=0>1000
+  m_text: <sprite=0>1000 <sprite=0>1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 66a29c8f3acee5340b4d2aa6e732a631, type: 2}
   m_sharedMaterial: {fileID: -3103672596471180676, guid: 66a29c8f3acee5340b4d2aa6e732a631, type: 2}
@@ -842,11 +876,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 14.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 10
   m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -878,7 +912,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 6.153347, y: 0, z: 6.153347, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

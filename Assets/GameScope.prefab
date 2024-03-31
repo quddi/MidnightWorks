@@ -93,19 +93,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 2|Cameras.CameraServiceInstaller, Assembly-CSharp
+      Data: 2|DataStorage.DataStorageInstaller, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 3|DataStorage.DataStorageInstaller, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|Inventory.InventoryServiceInstaller, Assembly-CSharp
+      Data: 3|Inventory.InventoryServiceInstaller, Assembly-CSharp
     - Name: _inventoryServiceConfig
       Entry: 10
       Data: 1
@@ -114,7 +108,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|NPC.NpcServiceInstaller, Assembly-CSharp
+      Data: 4|NPC.NpcServiceInstaller, Assembly-CSharp
     - Name: _npcServiceConfig
       Entry: 10
       Data: 2
@@ -123,10 +117,16 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 6|UI.UiServiceInstaller, Assembly-CSharp
+      Data: 5|UI.UiServiceInstaller, Assembly-CSharp
     - Name: _uiServiceConfig
       Entry: 10
       Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Camera.CameraServiceInstaller, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
