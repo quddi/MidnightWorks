@@ -49,6 +49,14 @@ namespace Inventory
             return containedItemsCount >= itemParameters.Count;
         }
 
+        public IInventory GetCopy()
+        {
+            return new UnStackableInventory
+            {
+                _items = new(Items)
+            };
+        }
+
         public bool ContainItem(string itemId)
         {
             return ContainItem(new ItemParameters { Id = itemId, Count = 1});

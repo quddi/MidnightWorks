@@ -18,7 +18,7 @@ namespace Inventory
         private IDataStorageService _dataStorageService;
 
         private Dictionary<string, ItemConfig> _itemConfigs;
-        private Dictionary<InventoryIdentifier, IInventory> _inventories;
+        private Dictionary<string, IInventory> _inventories;
 
         public event Action<InventoryIdentifier, ItemParameters> OnItemAdded;
 
@@ -46,20 +46,20 @@ namespace Inventory
 
         public long GetItemsCount(InventoryIdentifier inventoryIdentifier, string itemId)
         {
-            if (!_inventories.ContainsKey(inventoryIdentifier))
+            if (!_inventories.ContainsKey(inventoryIdentifier.Id))
                 return 0;
 
-            var inventory = _inventories[inventoryIdentifier];
+            var inventory = _inventories[inventoryIdentifier.Id];
 
             return inventory.GetItemsCount(itemId);
         }
 
         public bool TryAddItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
-            if (!_inventories.ContainsKey(inventoryIdentifier))
+            if (!_inventories.ContainsKey(inventoryIdentifier.Id))
                 return false;
 
-            var inventory = _inventories[inventoryIdentifier];
+            var inventory = _inventories[inventoryIdentifier.Id];
 
             inventory.AddItem(itemParameters);
             
@@ -72,10 +72,10 @@ namespace Inventory
 
         public bool TryRemoveItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
-            if (!_inventories.ContainsKey(inventoryIdentifier))
+            if (!_inventories.ContainsKey(inventoryIdentifier.Id))
                 return false;
             
-            var inventory = _inventories[inventoryIdentifier];
+            var inventory = _inventories[inventoryIdentifier.Id];
 
             var succeed = inventory.TryRemoveItem(itemParameters);
 
@@ -95,20 +95,20 @@ namespace Inventory
 
         public bool ContainItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
-            if (!_inventories.ContainsKey(inventoryIdentifier))
+            if (!_inventories.ContainsKey(inventoryIdentifier.Id))
                 return false;
             
-            var inventory = _inventories[inventoryIdentifier];
+            var inventory = _inventories[inventoryIdentifier.Id];
 
             return inventory.ContainItem(itemParameters);
         }
 
         public bool ContainItem(InventoryIdentifier inventoryIdentifier, string itemId)
         {
-            if (!_inventories.ContainsKey(inventoryIdentifier))
+            if (!_inventories.ContainsKey(inventoryIdentifier.Id))
                 return false;
             
-            var inventory = _inventories[inventoryIdentifier];
+            var inventory = _inventories[inventoryIdentifier.Id];
             
             return inventory.ContainItem(itemId);
         }
@@ -117,7 +117,8 @@ namespace Inventory
         {
             if (!_dataStorageService.Contains(_inventoryServiceConfig.DataStorageKey))
             {
-                _inventories = new(_inventoryServiceConfig.Inventories);
+                _inventories = _inventoryServiceConfig.Inventories
+                    .ToDictionary(pair => pair.Key.Id, pair => pair.Value.GetCopy());
                 
                 Save();
                 
@@ -126,7 +127,7 @@ namespace Inventory
 
             var data = await _dataStorageService.Load(_inventoryServiceConfig.DataStorageKey);
             
-            _inventories = JsonConvert.DeserializeObject<Dictionary<InventoryIdentifier, IInventory>>(data, 
+            _inventories = JsonConvert.DeserializeObject<Dictionary<string, IInventory>>(data, 
                 Constants.JsonSerializerSettings);
         }
     }

@@ -13,11 +13,17 @@ namespace NPC
 
         public void SetWalkingAnimation()
         {
+            if (destroyCancellationToken.IsCancellationRequested)
+                return;
+            
             _animator.SetTrigger(WalkingTriggerKey);
         }
 
         public void SetIdleAnimation()
         {
+            if (destroyCancellationToken.IsCancellationRequested)
+                return;
+            
             _animator.SetTrigger(IdleTriggerKey);
         }
     }

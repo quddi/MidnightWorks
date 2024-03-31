@@ -7,7 +7,7 @@ namespace Inventory
     [CreateAssetMenu(fileName = "Inventory Identifier", menuName = "ScriptableObjects/Inventory/Inventory identifier")]
     public class InventoryIdentifier : ScriptableObject
     {
-        [SerializeField] private readonly string _id;
+        [SerializeField] private string _id;
 
         public string Id => _id;
 

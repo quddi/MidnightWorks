@@ -43,6 +43,14 @@ namespace Inventory
             return _items.ContainsKey(itemParameters.Id) && _items[itemParameters.Id] >= itemParameters.Count;
         }
 
+        public IInventory GetCopy()
+        {
+            return new StackableInventory()
+            {
+                _items = new(Items)
+            };
+        }
+
         public bool ContainItem(string itemId)
         {
             return ContainItem(new ItemParameters { Id = itemId, Count = 0 });

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381316c541c84420a469bfc9e67d8b94, type: 3}
   m_Name: Stackable Inventory Identifier
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: Stacable Inventory
+  _id: Stackable

@@ -19,5 +19,7 @@ namespace Inventory
         {
             return itemParameters.All(ContainItem);
         }
+
+        public IInventory GetCopy();
     }
 }
