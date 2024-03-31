@@ -11,13 +11,14 @@ namespace Buildings
     {
         [field: SerializeField] public string DataStorageKey { get; private set; }
 
-        [field: SerializeField] public HashSet<BuildingConfig> BuildingsConfigs { get; private set; } = new();
+        [field: SerializeField] public List<BuildingConfig> BuildingsConfigs { get; private set; } = new();
         
 #if UNITY_EDITOR
         [Button]
         public void AddAllItemsConfigs()
         {
-            BuildingsConfigs = ExtensionMethods.GetAllScriptableObjects<BuildingConfig>().ToHashSet();
+            BuildingsConfigs = ExtensionMethods.GetAllScriptableObjects<BuildingConfig>().ToList();
+            UnityEditor.EditorUtility.SetDirty(this);
         }
         
         public static IEnumerable<string> BuildingsIds

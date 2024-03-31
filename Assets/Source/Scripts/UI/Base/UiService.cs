@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Extensions;
 using VContainer;
+using VContainer.Unity;
 using Object = UnityEngine.Object;
 
 namespace UI
@@ -10,13 +11,15 @@ namespace UI
     {
         private UiServiceConfig _uiServiceConfig;
         
+        private IObjectResolver _objectResolver;
         private WindowsContainers _windowsContainers;
         private Dictionary<Type, (Window window, int layer)> _activeWindows = new();
         private Dictionary<Type, Window> _inactiveWindows = new();
 
         [Inject]
-        private void Construct(UiServiceConfig uiServiceConfig)
+        private void Construct(UiServiceConfig uiServiceConfig, IObjectResolver objectResolver)
         {
+            _objectResolver = objectResolver;
             _uiServiceConfig = uiServiceConfig;
         }
         
@@ -80,7 +83,7 @@ namespace UI
 
             var prefab = _uiServiceConfig.WindowsPrefabs[type];
 
-            var window = Object.Instantiate(prefab, windowsContainer.Transform);
+            var window = _objectResolver.Instantiate(prefab, windowsContainer.Transform);
 
             return window;
         }

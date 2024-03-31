@@ -13,7 +13,12 @@ namespace Inventory
 
         [JsonIgnore]
         private IReadOnlyDictionary<string, long> Items => _items;
-        
+
+        public long GetItemsCount(string itemId)
+        {
+            return Items.GetValueOrDefault(itemId, 0);
+        }
+
         public void AddItem(ItemParameters itemParameters)
         {
             if (!_items.TryAdd(itemParameters.Id, itemParameters.Count)) 

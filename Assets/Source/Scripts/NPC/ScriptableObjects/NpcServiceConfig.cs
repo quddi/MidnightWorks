@@ -9,13 +9,15 @@ namespace NPC
     [CreateAssetMenu(fileName = "NPC Service Config", menuName = "ScriptableObjects/NPC/NPC service config")]
     public class NpcServiceConfig : SerializedScriptableObject
     {
-        [field: SerializeField] public HashSet<NpcConfig> NpcConfigs { get; private set; } = new();
+        [field: SerializeField] public List<NpcConfig> NpcConfigs { get; private set; } = new();
         
 #if UNITY_EDITOR
         [Button]
         public void AddAllItemsConfigs()
         {
-            NpcConfigs = ExtensionMethods.GetAllScriptableObjects<NpcConfig>().ToHashSet();
+            NpcConfigs = ExtensionMethods.GetAllScriptableObjects<NpcConfig>().ToList();
+            
+            UnityEditor.EditorUtility.SetDirty(this);
         }
         
         public static IEnumerable<string> NpcIds

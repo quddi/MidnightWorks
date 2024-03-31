@@ -15,55 +15,18 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 0d4058be348684441a32aac7e46c69b9, type: 2}
-    - {fileID: 11400000, guid: b5292020fb1a2414a88a371163510393, type: 2}
-    - {fileID: 11400000, guid: 5fd725c997440d741aada7d50092dcdf, type: 2}
-    - {fileID: 11400000, guid: ad59bb31d7dc3144bab33146adb7002d, type: 2}
-    - {fileID: 11400000, guid: dc267b75d83f085499e757f8067a096f, type: 2}
-    - {fileID: 11400000, guid: a695229be510c4448b366273ca61378d, type: 2}
-    - {fileID: 11400000, guid: 2154d52dd93a52045967b6b6573fa47f, type: 2}
-    - {fileID: 11400000, guid: c3bf8a685d503dc4bbd8b0496e983380, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: <NpcConfigs>k__BackingField
-      Entry: 7
-      Data: 0|System.Collections.Generic.HashSet`1[[NPC.NpcConfig, Assembly-CSharp]],
-        System.Core
-    - Name: 
-      Entry: 12
-      Data: 8
-    - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  <NpcPrefab>k__BackingField: {fileID: 4074641695163478435, guid: a7fabf30102b29642af3eeebbdba45f2, type: 3}
+    SerializationNodes: []
+  <NpcConfigs>k__BackingField:
+  - {fileID: 11400000, guid: 0d4058be348684441a32aac7e46c69b9, type: 2}
+  - {fileID: 11400000, guid: b5292020fb1a2414a88a371163510393, type: 2}
+  - {fileID: 11400000, guid: 5fd725c997440d741aada7d50092dcdf, type: 2}
+  - {fileID: 11400000, guid: ad59bb31d7dc3144bab33146adb7002d, type: 2}
+  - {fileID: 11400000, guid: dc267b75d83f085499e757f8067a096f, type: 2}
+  - {fileID: 11400000, guid: a695229be510c4448b366273ca61378d, type: 2}
+  - {fileID: 11400000, guid: 2154d52dd93a52045967b6b6573fa47f, type: 2}
+  - {fileID: 11400000, guid: c3bf8a685d503dc4bbd8b0496e983380, type: 2}

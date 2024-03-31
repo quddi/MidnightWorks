@@ -13,13 +13,15 @@ namespace Inventory
         
         [field: SerializeField] public Dictionary<InventoryIdentifier, IInventory> Inventories { get; private set; } = new();
 
-        [field: SerializeField] public HashSet<ItemConfig> ItemsConfigs { get; private set; } = new();
+        [field: SerializeField] public List<ItemConfig> ItemsConfigs { get; private set; } = new();
 
 #if UNITY_EDITOR
         [Button]
         public void AddAllItemsConfigs()
         {
-            ItemsConfigs = ExtensionMethods.GetAllScriptableObjects<ItemConfig>().ToHashSet();
+            ItemsConfigs = ExtensionMethods.GetAllScriptableObjects<ItemConfig>().ToList();
+            
+            UnityEditor.EditorUtility.SetDirty(this);
         }
         
         public static IEnumerable<string> ItemsIds

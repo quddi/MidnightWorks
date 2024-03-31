@@ -17,8 +17,6 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 708daa9aad1d51946bd8d5da36f9f1b9, type: 2}
-    - {fileID: 11400000, guid: fcec6f6b86feafc40945c6b6ea5463d3, type: 2}
-    - {fileID: 11400000, guid: 98cd3ae981a7abf4eaf68305e9e166b4, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -37,7 +35,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
@@ -74,52 +72,14 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: 5|Inventory.UnStackableInventory, Assembly-CSharp
-    - Name: _items
-      Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: <ItemsConfigs>k__BackingField
-      Entry: 7
-      Data: 7|System.Collections.Generic.HashSet`1[[Inventory.ItemConfig, Assembly-CSharp]],
-        System.Core
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  <DataStorageKey>k__BackingField: InventoryService
+  <DataStorageKey>k__BackingField: Inventory
+  <ItemsConfigs>k__BackingField:
+  - {fileID: 11400000, guid: 2e7ebfc7047cbc346b66f574f2bda8bb, type: 2}
+  - {fileID: 11400000, guid: f20d8c21a60fe5948afb68dad61f82cf, type: 2}
+  - {fileID: 11400000, guid: 98cd3ae981a7abf4eaf68305e9e166b4, type: 2}
+  - {fileID: 11400000, guid: fb1604e9e22f36143b44918436713897, type: 2}

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfcad8823e842de9d90f4d206d1231c, type: 3}
-  m_Name: Money Config
+  m_Name: Pizza Config
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1222884733, guid: cd12c826c5104a94680300b522af37ee, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -23,7 +24,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <Id>k__BackingField
       Entry: 1
-      Data: Money Item
+      Data: Pizza Item
     - Name: <Icon>k__BackingField
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0

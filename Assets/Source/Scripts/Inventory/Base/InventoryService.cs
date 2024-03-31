@@ -50,6 +50,8 @@ namespace Inventory
                 return 0;
 
             var inventory = _inventories[inventoryIdentifier];
+
+            return inventory.GetItemsCount(itemId);
         }
 
         public bool TryAddItem(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)

@@ -15,7 +15,12 @@ namespace Inventory
 
         [JsonIgnore]
         public IReadOnlyList<string> Items => _items;
-        
+
+        public long GetItemsCount(string itemId)
+        {
+            return _items.Count(inventoryItemId => inventoryItemId == itemId);
+        }
+
         public void AddItem(ItemParameters itemParameters)
         {
             for (int i = 0; i < itemParameters.Count; i++)

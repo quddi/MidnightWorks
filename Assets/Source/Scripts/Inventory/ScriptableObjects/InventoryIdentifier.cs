@@ -7,7 +7,9 @@ namespace Inventory
     [CreateAssetMenu(fileName = "Inventory Identifier", menuName = "ScriptableObjects/Inventory/Inventory identifier")]
     public class InventoryIdentifier : ScriptableObject
     {
-        [field: SerializeField] public string Id { get; private set; }
+        [SerializeField] private readonly string _id;
+
+        public string Id => _id;
 
         public override int GetHashCode()
         {

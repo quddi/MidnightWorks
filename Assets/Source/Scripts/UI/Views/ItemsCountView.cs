@@ -13,7 +13,8 @@ namespace UI
         [ValueDropdown("@InventoryServiceConfig.ItemsIds")]
 #endif
         [SerializeField, TabGroup("Parameters")] private string _itemId;
-
+        [SerializeField, TabGroup("Parameters")] private InventoryIdentifier _inventoryIdentifier;
+        
         [SerializeField, TabGroup("Components")] private Image _itemIcon;
         [SerializeField, TabGroup("Components")] private TMP_Text _countText;
         
@@ -28,6 +29,14 @@ namespace UI
             _inventoryService = inventoryService;
 
             _constructed = true;
+
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            UpdateIcon();
+            UpdateCount();
             
             Subscribe();
         }
@@ -39,14 +48,26 @@ namespace UI
 
         private void UpdateCount()
         {
-            _countText.text = _inventoryService.Get
+            _countText.text = _inventoryService.GetItemsCount(_inventoryIdentifier, _itemId).ToString();
         }
-        
+
+        private void OnSomeInventoryItemsChangedHandler(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
+        {
+            if (_inventoryIdentifier.Id != inventoryIdentifier.Id) 
+                return;
+            
+            if (itemParameters.Id == _itemId)
+                UpdateCount();
+        }
+
         private void Subscribe()
         {
             if (_subscribed || !_constructed) return;
 
             _subscribed = true;
+            
+            _inventoryService.OnItemAdded += OnSomeInventoryItemsChangedHandler;
+            _inventoryService.OnItemRemoved += OnSomeInventoryItemsChangedHandler;
         }
 
         private void Unsubscribe()
@@ -54,6 +75,9 @@ namespace UI
             if (!_subscribed) return;
 
             _subscribed = false;
+            
+            _inventoryService.OnItemAdded -= OnSomeInventoryItemsChangedHandler;
+            _inventoryService.OnItemRemoved -= OnSomeInventoryItemsChangedHandler;
         }
 
         private void OnEnable()

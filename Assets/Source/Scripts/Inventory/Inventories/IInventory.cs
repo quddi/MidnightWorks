@@ -5,6 +5,8 @@ namespace Inventory
 {
     public interface IInventory
     {
+        public long GetItemsCount(string itemId);
+        
         public void AddItem(ItemParameters itemParameters);
         
         public bool TryRemoveItem(ItemParameters itemParameters);
