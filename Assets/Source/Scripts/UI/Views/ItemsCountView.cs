@@ -17,9 +17,10 @@ namespace UI
         
         [SerializeField, TabGroup("Components")] private Image _itemIcon;
         [SerializeField, TabGroup("Components")] private TMP_Text _countText;
+        [SerializeField, TabGroup("Components")] private ItemAdditionView _itemAdditionView;
         
         private IInventoryService _inventoryService;
-
+        
         private bool _subscribed;
         private bool _constructed;
 
@@ -55,9 +56,12 @@ namespace UI
         {
             if (_inventoryIdentifier.Id != inventoryIdentifier.Id) 
                 return;
-            
+
             if (itemParameters.Id == _itemId)
+            {
                 UpdateCount();
+                _itemAdditionView.ExecuteAnimation(itemParameters.Count).Forget();
+            }
         }
 
         private void Subscribe()
