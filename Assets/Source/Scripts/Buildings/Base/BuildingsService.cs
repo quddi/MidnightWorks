@@ -22,7 +22,7 @@ namespace Buildings
         private HashSet<string> _purchasedBuildingsIds = new();
         private Dictionary<string, BuildingConfig> _buildingConfigs = new();
 
-        public event Action OnBuildingPurchased;
+        public event Action<string> OnBuildingPurchased;
 
         [Inject]
         private void Construct(BuildingsServiceConfig buildingsServiceConfig, IDataStorageService dataStorageService,
@@ -60,13 +60,15 @@ namespace Buildings
             
             foreach (var itemParameters in price)
             {
-                if (_inventoryService.TryRemoveItem(_buildingsServiceConfig.PurchasingInventoryIdentifier, itemParameters))
+                if (!_inventoryService.TryRemoveItem(_buildingsServiceConfig.PurchasingInventoryIdentifier, itemParameters))
                     throw new TransactionException($"Could not remove items: [{itemParameters}]");
             }
 
             _purchasedBuildingsIds.Add(buildingId);
             
             Save();
+            
+            OnBuildingPurchased?.Invoke(buildingId);
 
             return true;
         }
@@ -74,6 +76,13 @@ namespace Buildings
         public bool IsBuilt(string buildingId)
         {
             return _purchasedBuildingsIds.Contains(buildingId);
+        }
+
+        public void ClaimBuildingReward(string buildingId)
+        {
+            var config = GetBuildingConfig(buildingId);
+
+            _inventoryService.TryAddItem(_buildingsServiceConfig.PurchasingInventoryIdentifier, config.ExecutionReward);
         }
 
         public async UniTask StartAsync(CancellationToken _)

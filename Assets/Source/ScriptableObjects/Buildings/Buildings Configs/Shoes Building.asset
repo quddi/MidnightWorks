@@ -21,6 +21,18 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: <ExecutionReward>k__BackingField
+      Entry: 7
+      Data: Inventory.ItemParameters, Assembly-CSharp
+    - Name: <Id>k__BackingField
+      Entry: 1
+      Data: Shoes Item
+    - Name: <Count>k__BackingField
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: <BuildPrice>k__BackingField
       Entry: 7
       Data: 0|System.Collections.Generic.List`1[[Inventory.ItemParameters, Assembly-CSharp]],
@@ -37,56 +49,6 @@ MonoBehaviour:
     - Name: <Count>k__BackingField
       Entry: 3
       Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: <ExecutionPrice>k__BackingField
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[Inventory.ItemParameters, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: Inventory.ItemParameters, Assembly-CSharp
-    - Name: <Id>k__BackingField
-      Entry: 1
-      Data: Money Item
-    - Name: <Count>k__BackingField
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: <ExecutionReward>k__BackingField
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[Inventory.ItemParameters, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: Inventory.ItemParameters, Assembly-CSharp
-    - Name: <Id>k__BackingField
-      Entry: 1
-      Data: Money Item
-    - Name: <Count>k__BackingField
-      Entry: 3
-      Data: 3
     - Name: 
       Entry: 8
       Data: 

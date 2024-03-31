@@ -11,11 +11,10 @@ namespace Buildings
         [field: SerializeField] public string Id { get; private set; }
 
         [field: SerializeField] public string Name { get; private set; }
+        
+        [field: SerializeField] public ItemParameters ExecutionReward { get; private set; }
+        
         [field: SerializeField] public List<ItemParameters> BuildPrice { get; private set; } = new();
-        
-        [field: SerializeField] public List<ItemParameters> ExecutionPrice { get; private set; } = new();
-        
-        [field: SerializeField] public List<ItemParameters> ExecutionReward { get; private set; } = new();
 
         public bool IsBoughtImmediately => BuildPrice.Count == 0;
     }

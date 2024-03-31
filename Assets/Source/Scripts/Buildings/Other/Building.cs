@@ -51,7 +51,7 @@ namespace Buildings
             _buildingModel.SetActive(isBuilt);
         }
 
-        private void OnSomeBuildingPurchasedHandler()
+        private void OnSomeBuildingPurchasedHandler(string _)
         {
             UpdateBuildingState();
         }

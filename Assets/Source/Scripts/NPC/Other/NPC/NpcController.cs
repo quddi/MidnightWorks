@@ -16,9 +16,15 @@ namespace NPC
         [SerializeField, TabGroup("Components")] private BuildingsPool _buildingsPool;
         
         private float _currentTime;
-        
         private List<Npc> _activeNpc = new();
+        private IBuildingsService _buildingsService;
 
+        [Inject]
+        private void Construct(IBuildingsService buildingsService)
+        {
+            _buildingsService = buildingsService;
+        }
+        
         private void Update()
         {
             if (_currentTime >= _checkingDelay)
@@ -53,6 +59,8 @@ namespace NPC
 
             var building = npc.Building;
 
+            _buildingsService.ClaimBuildingReward(building.Id);
+            
             _buildingsPool.ReleaseBuilding(building);
 
             npc.OnLeft += OnNpcLeftHandler;
