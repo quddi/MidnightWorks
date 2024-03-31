@@ -22,13 +22,15 @@ namespace Buildings
         [SerializeField, TabGroup("Components")] private GameObject _buildingModel;
         
         private IBuildingsService _buildingsService;
+        private IUiService _uiService;
 
         private bool _subscribed;
         private bool _constructed;
 
         [Inject]
-        private void Construct(IBuildingsService buildingsService)
+        private void Construct(IBuildingsService buildingsService, IUiService uiService)
         {
+            _uiService = uiService;
             _buildingsService = buildingsService;
 
             _constructed = true;
@@ -58,7 +60,8 @@ namespace Buildings
 
         private void OnColliderClickedHandler()
         {
-            _buildingPurchaseView.gameObject.SetActive(true);
+            if (!_uiService.IsWindowActive<CraftWindow>())
+                _buildingPurchaseView.gameObject.SetActive(true);
         }
 
         private void Subscribe()

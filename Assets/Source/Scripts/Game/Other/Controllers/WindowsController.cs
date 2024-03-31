@@ -18,6 +18,7 @@ namespace Game
         private void Start()
         {
             _uiService.TryShowWindow<GameplayWindow>(5);
+            _uiService.TryShowWindow<CurrencyWindow>(9);
         }
     }
 }

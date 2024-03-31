@@ -11,6 +11,8 @@ namespace Inventory
     {
         [field: SerializeField] public string DataStorageKey { get; private set; }
         
+        [field: SerializeField] public int CraftItemCount { get; private set; }
+        
         [field: SerializeField] public Dictionary<InventoryIdentifier, IInventory> Inventories { get; private set; } = new();
 
         [field: SerializeField] public List<ItemConfig> ItemsConfigs { get; private set; } = new();

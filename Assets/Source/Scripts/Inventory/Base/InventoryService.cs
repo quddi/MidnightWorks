@@ -20,6 +20,8 @@ namespace Inventory
         private Dictionary<string, ItemConfig> _itemConfigs;
         private Dictionary<string, IInventory> _inventories;
 
+        public int CraftItemCount => _inventoryServiceConfig.CraftItemCount;
+
         public event Action<InventoryIdentifier, ItemParameters> OnItemAdded;
 
         public event Action<InventoryIdentifier, ItemParameters> OnItemRemoved;

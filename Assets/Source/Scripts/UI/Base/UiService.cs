@@ -55,10 +55,10 @@ namespace UI
 
         public bool TryHideWindow<T>() where T : Window
         {
-            var key = typeof(T);
-
-            if (!_activeWindows.ContainsKey(key))
+            if (!IsWindowActive<T>())
                 return false;
+            
+            var key = typeof(T);
 
             var window = _activeWindows.Snatch(key).window;
             
@@ -69,6 +69,11 @@ namespace UI
             _inactiveWindows[key] = window;
 
             return true;
+        }
+
+        public bool IsWindowActive<T>() where T : Window
+        {
+            return _activeWindows.ContainsKey(typeof(T));
         }
 
         public void RegisterWindowsContainers(WindowsContainers windowsContainers)

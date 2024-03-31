@@ -78,8 +78,11 @@ MonoBehaviour:
       Entry: 8
       Data: 
   <DataStorageKey>k__BackingField: Inventory
+  <CraftItemCount>k__BackingField: 1
   <ItemsConfigs>k__BackingField:
   - {fileID: 11400000, guid: 2e7ebfc7047cbc346b66f574f2bda8bb, type: 2}
   - {fileID: 11400000, guid: f20d8c21a60fe5948afb68dad61f82cf, type: 2}
   - {fileID: 11400000, guid: 98cd3ae981a7abf4eaf68305e9e166b4, type: 2}
   - {fileID: 11400000, guid: fb1604e9e22f36143b44918436713897, type: 2}
+  - {fileID: 11400000, guid: 9cead3d3527a67f4fb552de796e94568, type: 2}
+  - {fileID: 11400000, guid: f78b8d47260321c4e92cfe56a97d68df, type: 2}

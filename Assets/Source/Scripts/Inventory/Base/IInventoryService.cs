@@ -6,6 +6,8 @@ namespace Inventory
 {
     public interface IInventoryService
     {
+        public int CraftItemCount { get; }
+        
         public event Action<InventoryIdentifier, ItemParameters> OnItemAdded; 
         public event Action<InventoryIdentifier, ItemParameters> OnItemRemoved;
 

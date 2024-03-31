@@ -6,6 +6,8 @@
         
         bool TryHideWindow<T>()  where T : Window;
 
+        bool IsWindowActive<T>() where T : Window;
+        
         void RegisterWindowsContainers(WindowsContainers windowsContainers);
     }
 }

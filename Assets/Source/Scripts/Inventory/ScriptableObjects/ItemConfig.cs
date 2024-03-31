@@ -10,6 +10,16 @@ namespace Inventory
         
         [field: SerializeField] public string IconInText { get; }
         [field: SerializeField] public Sprite Icon { get; }
+
+#if UNITY_EDITOR
+        [field: ValueDropdown("@InventoryServiceConfig.ItemsIds")]
+#endif
+        [field: SerializeField, TabGroup("Craft")] public string FirstCraftItemId { get; set; }
+        
+#if UNITY_EDITOR
+        [field: ValueDropdown("@InventoryServiceConfig.ItemsIds")]
+#endif
+        [field: SerializeField, TabGroup("Craft")] public string SecondCraftItemId { get; set; }
         
         public override int GetHashCode()
         {
