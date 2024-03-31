@@ -7,7 +7,6 @@ namespace Game
 {
     public class InstallersContainer : SerializedMonoBehaviour
     {
-        [field: SerializeField] public List<IInstaller> InjectableServicesInstallers { get; private set; } = new();
-        [field: SerializeField] public List<IInstaller> DefaultServicesInstallers { get; private set; } = new();
+        [field: SerializeField] public List<IInstaller> ServicesInstallers { get; private set; } = new();
     }
 }

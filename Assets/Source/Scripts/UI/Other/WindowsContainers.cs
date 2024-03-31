@@ -16,7 +16,7 @@ namespace UI
         {
             uiService.RegisterWindowsContainers(this);
         }
-        
+
         private void Awake()
         {
             foreach (Transform child in transform)

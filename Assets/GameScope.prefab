@@ -66,44 +66,26 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 74ed3cf2f083f0c4d96e96022bfc2217, type: 2}
     - {fileID: 11400000, guid: a3e680a92c2a0d14b8d71b2ad4e8b075, type: 2}
-    - {fileID: 11400000, guid: fc1b463eb1df0434d8e0451762843367, type: 2}
     - {fileID: 11400000, guid: 2edd2d65906584946b06e3e8878db7b3, type: 2}
+    - {fileID: 11400000, guid: fc1b463eb1df0434d8e0451762843367, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: <InjectableServicesInstallers>k__BackingField
+    - Name: <ServicesInstallers>k__BackingField
       Entry: 7
       Data: 0|System.Collections.Generic.List`1[[VContainer.Unity.IInstaller, VContainer]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 6
     - Name: 
       Entry: 7
-      Data: 1|DataStorage.DataStorageInstaller, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: <DefaultServicesInstallers>k__BackingField
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[VContainer.Unity.IInstaller, VContainer]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 3|Inventory.InventoryServiceInstaller, Assembly-CSharp
-    - Name: _inventoryServiceConfig
+      Data: 1|Buildings.BuildingsServiceInstaller, Assembly-CSharp
+    - Name: _buildingsServiceConfig
       Entry: 10
       Data: 0
     - Name: 
@@ -111,8 +93,20 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|UI.UiServiceInstaller, Assembly-CSharp
-    - Name: _uiServiceConfig
+      Data: 2|Cameras.CameraServiceInstaller, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|DataStorage.DataStorageInstaller, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|Inventory.InventoryServiceInstaller, Assembly-CSharp
+    - Name: _inventoryServiceConfig
       Entry: 10
       Data: 1
     - Name: 
@@ -124,6 +118,15 @@ MonoBehaviour:
     - Name: _npcServiceConfig
       Entry: 10
       Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|UI.UiServiceInstaller, Assembly-CSharp
+    - Name: _uiServiceConfig
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
