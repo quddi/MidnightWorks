@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Extensions;
+using Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Buildings
     {
         [field: SerializeField] public string DataStorageKey { get; private set; }
 
+        [field: SerializeField] public InventoryIdentifier PurchasingInventoryIdentifier { get; private set; }
+        
         [field: SerializeField] public List<BuildingConfig> BuildingsConfigs { get; private set; } = new();
         
 #if UNITY_EDITOR

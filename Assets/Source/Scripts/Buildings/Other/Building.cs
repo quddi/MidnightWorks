@@ -1,4 +1,6 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
+using Game;
 using Sirenix.OdinInspector;
 using UI;
 using UnityEngine;
@@ -16,10 +18,77 @@ namespace Buildings
         [field: SerializeField, TabGroup("Components")] public Transform StayPoint { get; private set; }
 
         [SerializeField, TabGroup("Components")] private BuildingPurchaseView _buildingPurchaseView;
+        [SerializeField, TabGroup("Components")] private ClickableCollider _clickableCollider;
+        [SerializeField, TabGroup("Components")] private GameObject _buildingModel;
         
+        private IBuildingsService _buildingsService;
+
+        private bool _subscribed;
+        private bool _constructed;
+
+        [Inject]
+        private void Construct(IBuildingsService buildingsService)
+        {
+            _buildingsService = buildingsService;
+
+            _constructed = true;
+            
+            Subscribe();
+        }
+
         private void Start()
         {
-            _buildingPurchaseView.SetBuildingId(Id);
+            _buildingPurchaseView.SetBuildingId(Id).Forget();
+            
+            UpdateBuildingState();
+        }
+
+        private void UpdateBuildingState()
+        {
+            var isBuilt = _buildingsService.IsBuilt(Id);
+            
+            _clickableCollider.gameObject.SetActive(!isBuilt);
+            _buildingModel.SetActive(isBuilt);
+        }
+
+        private void OnSomeBuildingPurchasedHandler()
+        {
+            UpdateBuildingState();
+        }
+
+        private void OnColliderClickedHandler()
+        {
+            _buildingPurchaseView.gameObject.SetActive(true);
+        }
+
+        private void Subscribe()
+        {
+            if (_subscribed || !_constructed) return;
+
+            _subscribed = true;
+            
+            _clickableCollider.OnClicked += OnColliderClickedHandler;
+            _buildingsService.OnBuildingPurchased += OnSomeBuildingPurchasedHandler;
+        }
+
+        private void Unsubscribe()
+        {
+            if (!_subscribed) return;
+
+            _subscribed = false;
+            
+            _clickableCollider.OnClicked -= OnColliderClickedHandler;
+            _buildingsService.OnBuildingPurchased -= OnSomeBuildingPurchasedHandler;
+        }
+
+        private void OnEnable()
+        {
+            Subscribe();
+        }
+
+        private void OnDisable()
+        {
+            Unsubscribe();
         }
     }
 }

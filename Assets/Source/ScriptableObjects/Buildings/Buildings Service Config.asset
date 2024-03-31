@@ -22,6 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   <DataStorageKey>k__BackingField: Buildings
+  <PurchasingInventoryIdentifier>k__BackingField: {fileID: 11400000, guid: 708daa9aad1d51946bd8d5da36f9f1b9, type: 2}
   <BuildingsConfigs>k__BackingField:
   - {fileID: 11400000, guid: 75d543d8c44359247922f1faba3ee341, type: 2}
   - {fileID: 11400000, guid: 811f85e0777583145a0ca1e5357fe416, type: 2}

@@ -453,6 +453,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6043181077157919884, guid: 549330ce66f97d2428162e6d2beda7c4, type: 3}
   m_PrefabInstance: {fileID: 3832575012453901779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7901120434932155365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6383396756237608502, guid: 549330ce66f97d2428162e6d2beda7c4, type: 3}
+  m_PrefabInstance: {fileID: 3832575012453901779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4082301188214253496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -461,6 +466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: _buildingModel
+      value: 
+      objectReference: {fileID: 7901120434932155365}
     - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       propertyPath: <Id>k__BackingField
       value: Shoes Building

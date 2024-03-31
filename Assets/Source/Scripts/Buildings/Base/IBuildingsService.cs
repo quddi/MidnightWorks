@@ -4,11 +4,11 @@ namespace Buildings
 {
     public interface IBuildingsService
     {
-        public event Action<string> OnBuilt;
+        public event Action OnBuildingPurchased;
 
         BuildingConfig GetBuildingConfig(string buildingId);
         
-        bool TryBuild(string buildingId);
+        bool TryPurchase(string buildingId);
 
         bool IsBuilt(string buildingId);
     }

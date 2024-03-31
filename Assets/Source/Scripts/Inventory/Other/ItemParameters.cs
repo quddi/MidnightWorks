@@ -11,5 +11,10 @@ namespace Inventory
         [field: SerializeField] public string Id { get; set; }
         
         [field: SerializeField] public long Count { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id} {Count}";
+        }
     }
 }

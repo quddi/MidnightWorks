@@ -4,10 +4,8 @@ using Buildings;
 using Cysharp.Threading.Tasks;
 using Inventory;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using VContainer;
 
@@ -16,20 +14,21 @@ namespace UI
     public class BuildingPurchaseView : MonoBehaviour
     {
         [SerializeField, TabGroup("Components")] private Button _puchaseButton;
-        [SerializeField, TabGroup("Components")] private TMP_Text _purchaseButtonText;
+        [SerializeField, TabGroup("Components")] private Button _closeButton;
         [SerializeField, TabGroup("Components")] private TMP_Text _titleText;
-
-        [SerializeField, TabGroup("Parameters")] private InventoryIdentifier _inventoryIdentifier;
-        [SerializeField, TabGroup("Parameters")] private Color _availableColor;
-        [SerializeField, TabGroup("Parameters")] private Color _unAvailableColor;
+        [SerializeField, TabGroup("Components")] private TMP_Text _purchaseButtonText;
         
+        [SerializeField, TabGroup("Parameters")] protected InventoryIdentifier _inventoryIdentifier;
+        [SerializeField, TabGroup("Parameters")] protected Color _availableColor;
+        [SerializeField, TabGroup("Parameters")] protected Color _unAvailableColor;
+
         private IBuildingsService _buildingsService;
         private IInventoryService _inventoryService;
-
-        private BuildingConfig _buildingConfig;
+        
+        protected BuildingConfig _buildingConfig;
+        protected string _buildingId;
         private bool _subscribed;
         private bool _constructed;
-        private string _buildingId;
 
         [Inject]
         private void Construct(IBuildingsService buildingsService, IInventoryService inventoryService)
@@ -42,17 +41,18 @@ namespace UI
             Subscribe();
         }
 
-        public async UniTaskVoid SetBuildingId(string buildingId)
+        public async UniTask SetBuildingId(string buildingId)
         {
             await UniTask.WaitUntil(() => _constructed);
             
             _buildingId = buildingId;
             _buildingConfig = _buildingsService.GetBuildingConfig(buildingId);
             
-            UpdateButtonState();
             UpdateTitleState();
+            
+            UpdateButtonState();
         }
-
+        
         private void UpdateTitleState()
         {
             if (_buildingConfig == null) 
@@ -60,7 +60,7 @@ namespace UI
 
             _titleText.text = _buildingConfig.Name;
         }
-
+        
         private void UpdateButtonState()
         {
             if (_buildingConfig == null) 
@@ -72,7 +72,7 @@ namespace UI
             _purchaseButtonText.text = PriceToString(buildPrice);
             _purchaseButtonText.color = canPurchase ? _availableColor : _unAvailableColor;
         }
-
+        
         private string PriceToString(List<ItemParameters> price)
         {
             var stringBuilder = new StringBuilder();
@@ -102,14 +102,27 @@ namespace UI
             UpdateButtonState();
         }
 
+        private void OnPurchaseButtonClickedHandler()
+        {
+            if (_buildingsService.TryPurchase(_buildingId)) 
+                gameObject.SetActive(false);
+        }
+        
+        private void OnCloseButtonClickedHandler()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void Subscribe()
         {
-            if (_subscribed || !_constructed) return;
+            if (_subscribed || !_constructed || !gameObject.activeSelf) return;
 
             _subscribed = true;
             
             _inventoryService.OnItemAdded += OnSomeInventorItemsChangedHandler;
             _inventoryService.OnItemRemoved += OnSomeInventorItemsChangedHandler;
+            _puchaseButton.onClick.AddListener(OnPurchaseButtonClickedHandler);
+            _closeButton.onClick.AddListener(OnCloseButtonClickedHandler);
         }
 
         private void Unsubscribe()
@@ -120,11 +133,16 @@ namespace UI
             
             _inventoryService.OnItemAdded -= OnSomeInventorItemsChangedHandler;
             _inventoryService.OnItemRemoved -= OnSomeInventorItemsChangedHandler;
+            _puchaseButton.onClick.RemoveListener(OnPurchaseButtonClickedHandler);
+            _closeButton.onClick.RemoveListener(OnCloseButtonClickedHandler);
         }
 
         private void OnEnable()
         {
             Subscribe();
+
+            if (_constructed)
+                UpdateButtonState();
         }
 
         private void OnDisable()

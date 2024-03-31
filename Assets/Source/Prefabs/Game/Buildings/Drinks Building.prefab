@@ -350,6 +350,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0082c86e23c05f49b14d290ed8ef4fc, type: 3}
+--- !u!1 &4914986565061678466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 687982891815842717, guid: e0082c86e23c05f49b14d290ed8ef4fc, type: 3}
+  m_PrefabInstance: {fileID: 5600717579550926367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5728115358718611256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 200379839952906535, guid: e0082c86e23c05f49b14d290ed8ef4fc, type: 3}
@@ -363,6 +368,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: _buildingModel
+      value: 
+      objectReference: {fileID: 4914986565061678466}
     - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       propertyPath: <Id>k__BackingField
       value: Drink Building

@@ -399,6 +399,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c04ebc8acc31d9b4c9493dd1fff3b465, type: 3}
+--- !u!1 &3704975899228021562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8401116916748578382, guid: c04ebc8acc31d9b4c9493dd1fff3b465, type: 3}
+  m_PrefabInstance: {fileID: 5187149103339687284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4044627601504795008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9213542401726133492, guid: c04ebc8acc31d9b4c9493dd1fff3b465, type: 3}
@@ -412,6 +417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
+      propertyPath: _buildingModel
+      value: 
+      objectReference: {fileID: 3704975899228021562}
     - target: {fileID: 260952320265380208, guid: 656b9385792b1f944998f1dc441b4930, type: 3}
       propertyPath: <Id>k__BackingField
       value: Pizza Building

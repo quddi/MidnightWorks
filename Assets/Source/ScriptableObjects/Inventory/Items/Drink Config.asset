@@ -27,7 +27,7 @@ MonoBehaviour:
       Data: Drink Item
     - Name: <IconInText>k__BackingField
       Entry: 1
-      Data: <sprite=3
+      Data: <sprite=3>
     - Name: <Icon>k__BackingField
       Entry: 10
       Data: 0

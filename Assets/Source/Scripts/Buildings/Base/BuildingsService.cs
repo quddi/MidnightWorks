@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Transactions;
 using Cysharp.Threading.Tasks;
 using DataStorage;
 using Extensions;
+using Inventory;
 using Newtonsoft.Json;
 using VContainer;
 using VContainer.Unity;
@@ -13,17 +15,20 @@ namespace Buildings
 {
     public class BuildingsService : IBuildingsService, IAsyncStartable
     {
-        private BuildingsServiceConfig _buildingsServiceConfig;
         private IDataStorageService _dataStorageService;
+        private IInventoryService _inventoryService;
 
-        private HashSet<string> _boughtBuildingsIds = new();
+        private BuildingsServiceConfig _buildingsServiceConfig;
+        private HashSet<string> _purchasedBuildingsIds = new();
         private Dictionary<string, BuildingConfig> _buildingConfigs = new();
 
-        public event Action<string> OnBuilt;
+        public event Action OnBuildingPurchased;
 
         [Inject]
-        private void Construct(BuildingsServiceConfig buildingsServiceConfig, IDataStorageService dataStorageService)
+        private void Construct(BuildingsServiceConfig buildingsServiceConfig, IDataStorageService dataStorageService,
+            IInventoryService inventoryService)
         {
+            _inventoryService = inventoryService;
             _dataStorageService = dataStorageService;
             _buildingsServiceConfig = buildingsServiceConfig;
 
@@ -32,8 +37,8 @@ namespace Buildings
 
         private void Save()
         {
-            _dataStorageService.SaveLazily(_buildingsServiceConfig.DataStorageKey,
-                JsonConvert.SerializeObject(_boughtBuildingsIds, Constants.JsonSerializerSettings));
+            _dataStorageService.SaveImmediately(_buildingsServiceConfig.DataStorageKey,
+                JsonConvert.SerializeObject(_purchasedBuildingsIds, Constants.JsonSerializerSettings));
         }
 
         public BuildingConfig GetBuildingConfig(string buildingId)
@@ -41,26 +46,41 @@ namespace Buildings
             return _buildingConfigs.GetValueOrDefault(buildingId);
         }
 
-        public bool TryBuild(string buildingId)
+        public bool TryPurchase(string buildingId)
         {
             if (IsBuilt(buildingId))
                 return false;
+
+            var price = GetBuildingConfig(buildingId).BuildPrice;
+            var canPurchase = _inventoryService.ContainItems(
+                _buildingsServiceConfig.PurchasingInventoryIdentifier, price);
+
+            if (!canPurchase)
+                return false;
             
-            //TODO: Paying
+            foreach (var itemParameters in price)
+            {
+                if (_inventoryService.TryRemoveItem(_buildingsServiceConfig.PurchasingInventoryIdentifier, itemParameters))
+                    throw new TransactionException($"Could not remove items: [{itemParameters}]");
+            }
+
+            _purchasedBuildingsIds.Add(buildingId);
+            
+            Save();
 
             return true;
         }
 
         public bool IsBuilt(string buildingId)
         {
-            return _boughtBuildingsIds.Contains(buildingId);
+            return _purchasedBuildingsIds.Contains(buildingId);
         }
 
         public async UniTask StartAsync(CancellationToken _)
         {
             if (!_dataStorageService.Contains(_buildingsServiceConfig.DataStorageKey))
             {
-                _boughtBuildingsIds = _buildingConfigs.Values
+                _purchasedBuildingsIds = _buildingConfigs.Values
                     .Where(buildingConfig => buildingConfig.IsBoughtImmediately)
                     .Select(buildingConfig => buildingConfig.Id)
                     .ToHashSet();
@@ -72,7 +92,7 @@ namespace Buildings
             
             var data = await _dataStorageService.Load(_buildingsServiceConfig.DataStorageKey);
             
-            _boughtBuildingsIds = JsonConvert.DeserializeObject<HashSet<string>>(data, Constants.JsonSerializerSettings);
+            _purchasedBuildingsIds = JsonConvert.DeserializeObject<HashSet<string>>(data, Constants.JsonSerializerSettings);
         }
     }
 }
