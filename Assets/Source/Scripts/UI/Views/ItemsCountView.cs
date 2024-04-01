@@ -52,7 +52,7 @@ namespace UI
             _countText.text = _inventoryService.GetItemsCount(_inventoryIdentifier, _itemId).ToString();
         }
 
-        private void OnSomeInventoryItemsChangedHandler(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
+        private void OnSomeInventoryItemsAddedHandler(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
         {
             if (_inventoryIdentifier.Id != inventoryIdentifier.Id) 
                 return;
@@ -63,6 +63,15 @@ namespace UI
                 _itemAdditionView.ExecuteAnimation(itemParameters.Count).Forget();
             }
         }
+        
+        private void OnSomeInventoryItemsRemovedHandler(InventoryIdentifier inventoryIdentifier, ItemParameters itemParameters)
+        {
+            if (_inventoryIdentifier.Id != inventoryIdentifier.Id) 
+                return;
+
+            if (itemParameters.Id == _itemId)
+                UpdateCount();
+        }
 
         private void Subscribe()
         {
@@ -70,8 +79,8 @@ namespace UI
 
             _subscribed = true;
             
-            _inventoryService.OnItemAdded += OnSomeInventoryItemsChangedHandler;
-            _inventoryService.OnItemRemoved += OnSomeInventoryItemsChangedHandler;
+            _inventoryService.OnItemAdded += OnSomeInventoryItemsAddedHandler;
+            _inventoryService.OnItemRemoved += OnSomeInventoryItemsRemovedHandler;
         }
 
         private void Unsubscribe()
@@ -80,8 +89,8 @@ namespace UI
 
             _subscribed = false;
             
-            _inventoryService.OnItemAdded -= OnSomeInventoryItemsChangedHandler;
-            _inventoryService.OnItemRemoved -= OnSomeInventoryItemsChangedHandler;
+            _inventoryService.OnItemAdded -= OnSomeInventoryItemsAddedHandler;
+            _inventoryService.OnItemRemoved -= OnSomeInventoryItemsRemovedHandler;
         }
 
         private void OnEnable()

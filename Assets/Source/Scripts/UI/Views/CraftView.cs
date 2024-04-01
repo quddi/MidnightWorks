@@ -49,6 +49,7 @@ namespace UI
             SetUpConfigs();
             SetUpParameters();
 
+            UpdateCraftTextsColor();
             UpdateCraftIconsState();
             UpdateCraftTextsCount();
             
@@ -109,7 +110,7 @@ namespace UI
                 return;
 
             var firstRemoveResult = _inventoryService.TryRemoveItem(_inventoryIdentifier, _firstCraftParameters);
-            var secondRemoveResult = _inventoryService.TryRemoveItem(_inventoryIdentifier, _firstCraftParameters);
+            var secondRemoveResult = _inventoryService.TryRemoveItem(_inventoryIdentifier, _secondCraftParameters);
 
             if (firstRemoveResult == false || secondRemoveResult == false)
                 throw new TransactionException($"Could not remove the [{_firstCraftParameters}] or [{_secondCraftParameters}]");
@@ -143,6 +144,9 @@ namespace UI
         private void OnEnable()
         {
             Subscribe();
+            
+            if (_constructed)
+                UpdateCraftTextsColor();
         }
 
         private void OnDisable()

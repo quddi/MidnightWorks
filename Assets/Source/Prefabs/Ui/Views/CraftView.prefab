@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.27058825, g: 0.27058825, b: 0.27058825, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -616,6 +616,22 @@ PrefabInstance:
     - target: {fileID: 7983674372081049829, guid: ec486737756ce834a813de33cfcbf425, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735575568828860090, guid: ec486737756ce834a813de33cfcbf425, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735575568828860090, guid: ec486737756ce834a813de33cfcbf425, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735575568828860090, guid: ec486737756ce834a813de33cfcbf425, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735575568828860090, guid: ec486737756ce834a813de33cfcbf425, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4282729797
       objectReference: {fileID: 0}
     - target: {fileID: 8801209057487644764, guid: ec486737756ce834a813de33cfcbf425, type: 3}
       propertyPath: m_Name

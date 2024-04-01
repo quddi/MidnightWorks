@@ -48,7 +48,7 @@ MonoBehaviour:
       Data: Burger Item
     - Name: <Count>k__BackingField
       Entry: 3
-      Data: 4
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -57,10 +57,10 @@ MonoBehaviour:
       Data: Inventory.ItemParameters, Assembly-CSharp
     - Name: <Id>k__BackingField
       Entry: 1
-      Data: Drink Item
+      Data: Small meal
     - Name: <Count>k__BackingField
       Entry: 3
-      Data: 5
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
